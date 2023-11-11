@@ -42,7 +42,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("SenderId");
 
-                    b.ToTable("Dialogs");
+                    b.ToTable("Dialogs", (string)null);
                 });
 
             modelBuilder.Entity("DAL.Models.User", b =>
@@ -64,7 +64,7 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("SecFlowMessenger.Models.Message", b =>
@@ -94,7 +94,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("DialogId");
 
-                    b.ToTable("Messages");
+                    b.ToTable("Messages", (string)null);
                 });
 
             modelBuilder.Entity("DAL.Models.Dialog", b =>

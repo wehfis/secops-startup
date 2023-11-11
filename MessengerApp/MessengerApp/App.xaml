@@ -5,9 +5,5 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary>
-            <sys:String x:Key="DbConnectionString">Data Source=Server=DESKTOP-DGHE1SU;Initial Catalog=SecFlowDb;Integrated Security=True;</sys:String>
-            <local:DbAplicationContext x:Key="MyDbContext"/>
-        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -2,12 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 using SecFlowMessenger.Models;
 using System;
+using System.Configuration;
 using System.Windows;
 
 namespace DAL.DBContex
 {
     public class DbAplicationContext : DbContext
     {
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["DbConnectionString"].ConnectionString;
         public DbAplicationContext()
         {
         }
@@ -33,11 +35,17 @@ namespace DAL.DBContex
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = "Server=DESKTOP-DGHE1SU;Database=SecFlowDb;Trusted_Connection=True;TrustServerCertificate=True";
 
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(connectionString);
+                if(!string.IsNullOrEmpty(connectionString))
+                {
+                    optionsBuilder.UseSqlServer(connectionString);
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
             }
         }
 
