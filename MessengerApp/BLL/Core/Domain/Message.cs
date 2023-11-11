@@ -1,11 +1,6 @@
-﻿using DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
-namespace SecFlowMessenger.Models
+namespace BLL.Core.Domain
 {
     public class Message
     {
@@ -14,7 +9,7 @@ namespace SecFlowMessenger.Models
         public long? DialogId { get; set; }
         public DateTime? Time { get; set; }
         public long? SenderId { get; set; }
-        public long? ResipientId { get; set; }
+        public long? RecipientId { get; set; }
         public Dialog? Dialog { get; set; }
     }
 }

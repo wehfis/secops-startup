@@ -1,9 +1,7 @@
-﻿using DAL.Models;
+﻿using BLL.Core.Domain;
 using Microsoft.EntityFrameworkCore;
-using SecFlowMessenger.Models;
 using System;
 using System.Configuration;
-using System.Windows;
 
 namespace DAL.DBContex
 {
