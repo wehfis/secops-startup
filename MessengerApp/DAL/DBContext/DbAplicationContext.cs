@@ -1,4 +1,5 @@
 ﻿using BLL.Core.Domain;
+using DAL.DBContext;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Configuration;
@@ -22,13 +23,18 @@ namespace DAL.DBContex
                 .HasMany(e => e.Dialogs)
                 .WithOne(e => e.Sender)
                 .HasForeignKey(e => e.SenderId)
-                .IsRequired(false);
+                .IsRequired(false)
+                .IsRequired(true)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Dialog>()
                 .HasMany(e => e.Messages)
                 .WithOne(e => e.Dialog)
                 .HasForeignKey(e => e.DialogId)
-                .IsRequired(false);
+                .IsRequired(false)
+                .IsRequired(true)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Seed();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
