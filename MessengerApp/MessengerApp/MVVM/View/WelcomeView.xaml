@@ -31,7 +31,7 @@
                     Welcome to the <LineBreak/> club buddy!
                     </TextBlock>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Margin="20" FontSize="18" Foreground="#005E63">
+                        <Button Margin="20" FontSize="18" Foreground="#005E63" Click="Button_Click_1">
                             Log in
                             <Button.Style>
                                 <Style TargetType="Button">
