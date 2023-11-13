@@ -24,7 +24,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             
-            <Border Height="400" BorderThickness="1" CornerRadius="21 " Background="#EDFDFA" Grid.Column="1" Grid.Row="1">
+            <Border BorderThickness="1" CornerRadius="21 " Background="#EDFDFA" Grid.Column="1" Grid.Row="1">
                 <StackPanel>
                     <Border Height="60" Background="#005E63" Panel.ZIndex="2" Canvas.Top="0" CornerRadius="20 20 0 0" />
                     <TextBlock FontSize="44" TextAlignment="Center" Margin="0 20 0 10" Foreground="#005E63">
@@ -59,7 +59,7 @@
                             <Style TargetType="Button">
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#005E63"/>
+                                        <Setter Property="Background" Value="#26AFB6"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>

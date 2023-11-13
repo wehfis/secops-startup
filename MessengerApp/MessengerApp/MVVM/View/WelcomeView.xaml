@@ -1,0 +1,79 @@
+﻿<Window x:Class="MessengerApp.MVVM.View.WelcomeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MessengerApp.MVVM.View"
+        mc:Ignorable="d"
+        Title="WelcomeView" Height="800" Width="1500">
+    <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="../../Images/Background.jpg" Stretch="None"/>
+        </Border.Background>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="550"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="320"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Border BorderThickness="1" CornerRadius="21 " Background="#EDFDFA" Grid.Column="1" Grid.Row="1">
+                <StackPanel>
+                    <TextBlock FontSize="10" TextAlignment="Center" Margin="0 10 0 10" Foreground="#005E63">
+                    sec.ops. INC
+                    </TextBlock>
+                    <TextBlock FontSize="44" TextAlignment="Center" Margin="0 20 0 10" Foreground="#005E63">
+                    Welcome to the <LineBreak/> club buddy!
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Margin="20" FontSize="18" Foreground="#005E63">
+                            Log in
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#26AFB6"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="150" Height="47" BorderThickness="2" BorderBrush="#005E63" CornerRadius="9" Background="Transparent">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Margin="20" FontSize="18" Foreground="White" Click="Button_Click">
+                            Sign Up
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#26AFB6"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="150" Height="47" CornerRadius="9" Background="#005E63">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

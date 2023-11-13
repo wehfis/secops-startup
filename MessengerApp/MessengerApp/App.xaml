@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
              xmlns:local="clr-namespace:DAL.DBContex;assembly=DAL"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             StartupUri="MVVM/View/LoginView.xaml">
+             StartupUri="MVVM/View/WelcomeView.xaml">
     <Application.Resources>
     </Application.Resources>
 </Application>
