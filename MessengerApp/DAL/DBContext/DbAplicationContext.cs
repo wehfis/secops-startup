@@ -42,7 +42,7 @@ namespace DAL.DBContex
                 }
                 else
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Wrong connection string.");
                 }
             }
         }
