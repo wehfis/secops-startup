@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MessengerApp.MVVM.View"
         mc:Ignorable="d"
-        Title="MainView" Height="800" Width="1500">
+        Title="MainView" Height="900" Width="1500">
     <Border>
         <Border.Background>
             <ImageBrush ImageSource="../../Images/Background.jpg" Stretch="None"/>
@@ -16,30 +16,141 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-
+            <!-- Left menu content -->
             <Grid Background="#005E63" Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition  Height="250"/>
+                    <RowDefinition  Height="200"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0">
-                    <StackPanel>
-                        <TextBlock FontSize="44" TextAlignment="Center" Margin="0 20 0 10" Foreground="White">
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Height="150" Width="150">
+                        <Border.Background>
+                            <ImageBrush Stretch="Fill" ImageSource="../../Images/Profile_skeletone.png"/>
+                        </Border.Background>
+                    </Border>
+                    
+                    <TextBlock FontSize="32" Foreground="#EDFDFA" Grid.Row="0" Grid.Column="1" Margin="5 20 0 0">
                             Dimass
-                        </TextBlock>
-                    </StackPanel>
-                </StackPanel>
-                <StackPanel Grid.Row="1" Orientation="Horizontal" Width="auto">
-                    <TextBlock FontSize="44" TextAlignment="Center" Foreground="White">
-                        Contacts 
                     </TextBlock>
-                    <TextBlock FontSize="44" TextAlignment="Center" Foreground="White">
-                        Groupes
+                    
+                    <TextBlock FontSize="16" Foreground="#EDFDFA" Grid.Row="0" Grid.Column="1" Margin="5 55  0 0">
+                            dimasik2004@gmail.com
                     </TextBlock>
-                </StackPanel>
+                </Grid>
+
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button FontSize="24 " Foreground="#005E63" Click="Button_Click_1" Grid.Column="0">
+                        Settings
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#26AFB6"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="150" Height="38" BorderThickness="2" BorderBrush="#EDFDFA" CornerRadius="9" Background="#EDFDFA">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button FontSize="24" Foreground="#EDFDFA" Click="Button_Click" Grid.Column="1">
+                        Log out
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#26AFB6"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="150" Height="38" BorderThickness="2" BorderBrush="#EDFDFA" CornerRadius="9">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button FontSize="24 " Foreground="#EDFDFA" Click="Button_Click_1" Grid.Column="0">
+                        Contacts
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#26AFB6"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border BorderThickness="2" BorderBrush="#EDFDFA" Background="Transparent">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button FontSize="24" Foreground="#005E63" Click="Button_Click" Grid.Column="1">
+                        Groups
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#26AFB6"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border BorderBrush="#EDFDFA" BorderThickness="2" Background="#EDFDFA">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
             </Grid>
+
+            <!-- Rigt area content -->
+            <Border Grid.Column="1" Width="555.3" Height="84.73" Background="#005E63" CornerRadius="50">
+                <TextBlock FontSize="44" Foreground="#EDFDFA" TextAlignment="Center" VerticalAlignment="Center">
+                            No chat is picked
+                </TextBlock>
+            </Border>
         </Grid>
     </Border>
 </Window>
