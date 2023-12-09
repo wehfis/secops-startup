@@ -9,27 +9,35 @@ using System.Threading.Tasks;
 using MessengerApp.ClientSocketLogic.EventModel;
 using MessengerApp.ClientSocketLogic.ClientEventsGenerators;
 using System.Text.Json;
+using System.Configuration;
 
 namespace MessengerApp.ClientSocketLogic.ClientSocketManager
 {
     internal class ClientSocketManager
     {
-        const string SERVER_IP = "192.168.0.108";
-        const int SERVER_PORT = 80;
+        private readonly IPAddress serverIp;
+        private readonly int serverPort = 80;
         private readonly StreamReader? STR;
         private readonly StreamWriter? STW;
         private readonly TcpClient? client;
-        private readonly IPEndPoint? ipEnd;
         public string? recieve;
         public Event? eventToSend = LoginGenerator.GenerateLoginEvent("andrii", "mysecretpassword");
 
         internal ClientSocketManager()
         {
+            string? serverIPString = ConfigurationManager.AppSettings["ServerIP"];
+            string? serverPortString = ConfigurationManager.AppSettings["ServerPort"];
+
+            if (serverIPString != null && serverPortString != null)
+            {
+                serverIp = IPAddress.Parse(serverIPString);
+                serverPort = int.Parse(serverPortString);
+            }
             try
             {
                 Console.WriteLine("Try connect to Server");
                 client = new TcpClient();
-                ipEnd = new IPEndPoint(IPAddress.Parse(SERVER_IP), SERVER_PORT);
+                IPEndPoint ipEnd = new IPEndPoint(serverIp, serverPort);
                 client.Connect(ipEnd);
                 STW = new StreamWriter(client.GetStream());
                 STR = new StreamReader(client.GetStream());
