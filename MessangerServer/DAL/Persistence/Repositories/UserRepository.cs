@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Persistence.Repositories
 {
-    internal class UserRepository : Repository<User>, IUserRepository
+    public class UserRepository : Repository<User>, IUserRepository
     {
         public UserRepository(DbAplicationContext context) : base(context)
         {
