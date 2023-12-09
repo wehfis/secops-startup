@@ -91,8 +91,8 @@ namespace MessangerServer.SocketLogic.SocketManager
                         string? serializedEvent = JsonSerializer.Serialize(eventToSend);
                         await STW.WriteLineAsync(serializedEvent);
                         Console.WriteLine($"Server send {serializedEvent}");
+                        eventToSend = null;
                     }
-                    eventToSend = null;
                     await Task.Delay(100);
                 }
                 catch (Exception ex)

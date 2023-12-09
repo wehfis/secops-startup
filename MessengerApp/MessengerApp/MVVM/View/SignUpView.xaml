@@ -29,6 +29,7 @@
                     Sign Up
                     </TextBlock>
                     <TextBox 
+                        x:Name="emailTextBox"
                         Width="400" 
                         Height="47.06" 
                         BorderBrush="#005E63"
@@ -40,7 +41,8 @@
                         Margin="0 20 0 0">
                         email address
                     </TextBox>
-                    <TextBox Width="400" 
+                    <TextBox Width="400"
+                        x:Name="nicknameTextBox"
                         Height="47.06" 
                         BorderBrush="#005E63"
                         BorderThickness="2"
@@ -51,7 +53,8 @@
                         Margin="0 20 0 0">
                         nickname
                     </TextBox>
-                    <TextBox Width="400" 
+                    <TextBox Width="400"
+                        x:Name="passwordTextBox"
                         Height="47.06" 
                         BorderBrush="#005E63"
                         BorderThickness="2"

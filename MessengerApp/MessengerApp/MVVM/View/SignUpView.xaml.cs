@@ -29,7 +29,10 @@ namespace MessengerApp.MVVM.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Event generatedEvent = AuthEventGenerator.GenerateRegisterEvent("andrii", "andrulik", "psaaword");
+            string email = emailTextBox.Text;
+            string nickname = nicknameTextBox.Text;
+            string password = passwordTextBox.Text;
+            Event generatedEvent = AuthEventGenerator.GenerateRegisterEvent(email, nickname, password);
             SocketInitializer.clientSocketManager.SendEvent(generatedEvent);
         }
     }
