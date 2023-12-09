@@ -1,4 +1,5 @@
-﻿using BLL.Core.Domain;
+﻿using Azure;
+using BLL.Core.Domain;
 using BLL.Core.Repositories;
 using DAL.DBContex;
 using DAL.Persistence.Repositories;
@@ -12,6 +13,17 @@ namespace MessangerServer.SocketLogic
         {
             // get email + password from eventParam dictionary
             // handle login with checking data base for this user
+            DbAplicationContext loginContext = new DbAplicationContext();
+            IUserRepository existingUser = new UserRepository(loginContext);
+
+            string email = eventParam.Parameters["email"].ToString();
+            string password = eventParam.Parameters["password"].ToString();
+
+            if (existingUser.FirstOrDefault(user => user.Username == email) == null)
+            {
+                // return Response;
+            }
+            // return Response (redirect to main page)
         }
 
         public static void HandleRegister(Event eventParam)
@@ -24,13 +36,15 @@ namespace MessangerServer.SocketLogic
 
             if (newUser.FirstOrDefault(user => user.Username == email) != null)
             {
-                // error
+                // return Response;
             }
 
             User userEntity = new User { Username = email, Password = password, Role = UserRole.User };
 
             newUser.Add(userEntity);
             registerContext.SaveChanges();
+            registerContext.Dispose();
+            // return Response;
 
         }
     }
