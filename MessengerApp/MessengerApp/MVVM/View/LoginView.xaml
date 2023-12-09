@@ -23,7 +23,7 @@
                 <RowDefinition Height="400"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            
+
             <Border BorderThickness="1" CornerRadius="21 " Background="#EDFDFA" Grid.Column="1" Grid.Row="1">
                 <StackPanel>
                     <Border Height="60" Background="#005E63" Panel.ZIndex="2" Canvas.Top="0" CornerRadius="20 20 0 0" />
@@ -31,6 +31,7 @@
                     Log In
                     </TextBlock>
                     <TextBox 
+                        Text = "{Binding Name}"
                         Width="400" 
                         Height="47.06" 
                         BorderBrush="#005E63"
@@ -39,9 +40,8 @@
                         FontSize="18"
                         Foreground="#499C9D"
                         VerticalContentAlignment="Center"
-                        Margin="0 20 0 0">
-                        email address
-                    </TextBox>
+                        Margin="0 20 0 0"/>
+
                     <TextBox Width="400" 
                         Height="47.06" 
                         BorderBrush="#005E63"

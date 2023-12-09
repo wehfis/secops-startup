@@ -12,11 +12,11 @@ namespace DAL.Persistence.Repositories
     internal class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         protected readonly DbAplicationContext Context;
-        public Repository(DbAplicationContext context) 
+        public Repository(DbAplicationContext context)
         {
             Context = context;
         }
-        public TEntity Get(long id) 
+        public TEntity Get(long id)
         {
             return Context.Set<TEntity>().Find(id);
         }
