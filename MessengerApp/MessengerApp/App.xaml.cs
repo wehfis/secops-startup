@@ -1,10 +1,4 @@
 ﻿using MessengerApp.ClientSocketLogic.ClientSocketManager;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace MessengerApp
@@ -17,8 +11,7 @@ namespace MessengerApp
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            ClientSocketManager clientSocketManager = new ClientSocketManager();
-            clientSocketManager.Connect();
+            SocketInitializer.InitializeSocket();
         }
     }
 }

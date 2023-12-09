@@ -12,7 +12,7 @@ namespace MessangerServer.SocketLogic.SocketManager
         private TcpClient client;
         public StreamReader STR;
         public StreamWriter STW;
-        public string? TextToSend;
+        public Event? eventToSend;
         const int LISTENING_PORT = 80;
         IPAddress LISTENING_ADDRESS;
 
@@ -51,27 +51,32 @@ namespace MessangerServer.SocketLogic.SocketManager
             {
                 try
                 {
-                    if (STR.Peek() >= 0)
+                    string? recieve = await STR.ReadLineAsync();
+                    if (!string.IsNullOrEmpty(recieve))
                     {
-                        string? recieve = await STR.ReadLineAsync();
-                        if (!string.IsNullOrEmpty(recieve))
+                        Console.WriteLine($"Server received {recieve}");
+                        Event? receivedEvent = JsonSerializer.Deserialize<Event>(recieve);
+                        switch (receivedEvent?.EventType)
                         {
-                            Console.WriteLine($"Server received {recieve}");
-                            Event? receivedEvent = JsonSerializer.Deserialize<Event>(recieve);
-                            switch (receivedEvent?.EventType)
-                            {
-                                case EventType.Login:
-                                    AuthenticationHandler.HandleLogin(receivedEvent);
-                                    break;
-                            }
+                            case EventType.Login:
+                                AuthenticationHandler.HandleLogin(receivedEvent);
+                                break;
+                            case EventType.Register:
+                                AuthenticationHandler.HandleRegister(receivedEvent);
+                                break;
                         }
                     }
+                    await Task.Delay(100);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
                 }
             }
+        }
+        public void SendEvent(Event eventObj)
+        {
+            this.eventToSend = eventObj;
         }
 
         internal async Task BackgroundSendListening()
@@ -81,12 +86,14 @@ namespace MessangerServer.SocketLogic.SocketManager
             {
                 try
                 {
-                    await STW.WriteLineAsync(TextToSend);
-                    if (TextToSend != "" && TextToSend != null)
+                    if (eventToSend != null)
                     {
-                        Console.WriteLine($"You send {TextToSend}");
+                        string? serializedEvent = JsonSerializer.Serialize(eventToSend);
+                        await STW.WriteLineAsync(serializedEvent);
+                        Console.WriteLine($"Server send {serializedEvent}");
                     }
-                    TextToSend = "";
+                    eventToSend = null;
+                    await Task.Delay(100);
                 }
                 catch (Exception ex)
                 {

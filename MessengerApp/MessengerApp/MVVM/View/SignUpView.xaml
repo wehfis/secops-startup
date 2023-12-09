@@ -73,7 +73,7 @@
                         Margin="0 20 0 0">
                         repeat password
                     </TextBox>
-                    <Button Margin=" 0 20 0 0" FontSize="18" Foreground="White">
+                    <Button x:Name="Submit_register_button" Margin=" 0 20 0 0" FontSize="18" Foreground="White" Click="Button_Click">
                         continue
                         <Button.Style>
                             <Style TargetType="Button">

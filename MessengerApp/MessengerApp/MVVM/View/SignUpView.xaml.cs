@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MessengerApp.ClientSocketLogic.ClientEventsGenerators;
+using MessengerApp.ClientSocketLogic.ClientSocketManager;
+using MessengerApp.ClientSocketLogic.EventModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +25,12 @@ namespace MessengerApp.MVVM.View
         public SignUpView()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Event generatedEvent = AuthEventGenerator.GenerateRegisterEvent("andrii", "andrulik", "psaaword");
+            SocketInitializer.clientSocketManager.SendEvent(generatedEvent);
         }
     }
 }

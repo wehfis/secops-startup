@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MessengerApp.ClientSocketLogic.ClientEventsGenerators
 {
-    internal static class LoginGenerator
+    internal static class AuthEventGenerator
     {
         public static Event GenerateLoginEvent(string email, string password)
         {
@@ -16,6 +16,18 @@ namespace MessengerApp.ClientSocketLogic.ClientEventsGenerators
                 EventType = EventType.Login,
                 Parameters = new Dictionary<string, object> {
                 { "email", email },
+                { "password", password }
+            }
+            };
+        }
+        public static Event GenerateRegisterEvent(string email, string nickname, string password)
+        {
+            return new Event
+            {
+                EventType = EventType.Login,
+                Parameters = new Dictionary<string, object> {
+                { "email", email },
+                { "nickname", nickname },
                 { "password", password }
             }
             };

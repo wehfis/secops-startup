@@ -13,17 +13,16 @@ using System.Configuration;
 
 namespace MessengerApp.ClientSocketLogic.ClientSocketManager
 {
-    internal class ClientSocketManager
+    public class ClientSocketManager
     {
         private readonly IPAddress serverIp;
         private readonly int serverPort = 80;
         private readonly StreamReader? STR;
         private readonly StreamWriter? STW;
-        private readonly TcpClient? client;
-        public string? recieve;
-        public Event? eventToSend = LoginGenerator.GenerateLoginEvent("andrii", "mysecretpassword");
+        private readonly TcpClient client;
+        public Event? eventToSend = AuthEventGenerator.GenerateLoginEvent("andrii", "mysecretpassword");
 
-        internal ClientSocketManager()
+        public ClientSocketManager()
         {
             string? serverIPString = ConfigurationManager.AppSettings["ServerIP"];
             string? serverPortString = ConfigurationManager.AppSettings["ServerPort"];
@@ -49,28 +48,38 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
             }
         }
 
-        internal void Connect()
+        public void Connect()
         {
             var receiveTask = Task.Run(() => BackgroundRecieveListening());
             var sendTask = Task.Run(() => BackgroundSendListening());
         }
 
-        internal async Task BackgroundRecieveListening()
+        public void SendEvent(Event eventObj)
         {
-            Console.WriteLine($"BackgroundRecieveListening. Client is connected: {client.Connected}");
+            this.eventToSend = eventObj;
+        }
+
+        public async Task BackgroundRecieveListening()
+        {
             while (client.Connected)
             {
                 try
                 {
-                    if (STR.Peek() >= 0)
+                    if (STR?.Peek() >= 0)
                     {
-                        recieve = await STR.ReadLineAsync();
-                        if (recieve != null && recieve != "")
+                        string? recieve = await STR.ReadLineAsync();
+                        if (!string.IsNullOrEmpty(recieve))
                         {
-                            Console.WriteLine($"You received {recieve}");
+                            Event? receivedEvent = JsonSerializer.Deserialize<Event>(recieve);
+                            switch (receivedEvent?.EventType)
+                            {
+                                case EventType.Login:
+                                    // handle incoming events
+                                    break;
+                            }
                         }
-                        recieve = "";
                     }
+                    await Task.Delay(100);
                 }
                 catch (Exception ex)
                 {
@@ -78,9 +87,8 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
                 }
             }
         }
-        internal async Task BackgroundSendListening()
+        public async Task BackgroundSendListening()
         {
-            Console.WriteLine($"BackgroundSendListening. Client is connected: {client.Connected}");
             while (client.Connected)
             {
                 try
@@ -89,9 +97,9 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
                     {
                         string? serializedEvent = JsonSerializer.Serialize(eventToSend);
                         await STW.WriteLineAsync(serializedEvent);
-                        Console.WriteLine($"You send {serializedEvent}");
                     }
                     eventToSend = null;
+                    await Task.Delay(100);
                 }
                 catch (Exception ex)
                 {
