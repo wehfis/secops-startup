@@ -6,6 +6,9 @@ using System.Net.Sockets;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using MessengerApp.ClientSocketLogic.EventModel;
+using MessengerApp.ClientSocketLogic.ClientEventsGenerators;
+using System.Text.Json;
 
 namespace MessengerApp.ClientSocketLogic.ClientSocketManager
 {
@@ -18,7 +21,7 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
         private readonly TcpClient? client;
         private readonly IPEndPoint? ipEnd;
         public string? recieve;
-        public string? TextToSend = "Hello, server";
+        public Event? eventToSend = LoginGenerator.GenerateLoginEvent("andrii", "mysecretpassword");
 
         internal ClientSocketManager()
         {
@@ -74,12 +77,13 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
             {
                 try
                 {
-                    await STW.WriteLineAsync(TextToSend);
-                    if (TextToSend != "")
+                    if (eventToSend != null)
                     {
-                        Console.WriteLine($"You send {TextToSend}");
+                        string? serializedEvent = JsonSerializer.Serialize(eventToSend);
+                        await STW.WriteLineAsync(serializedEvent);
+                        Console.WriteLine($"You send {serializedEvent}");
                     }
-                    TextToSend = "";
+                    eventToSend = null;
                 }
                 catch (Exception ex)
                 {

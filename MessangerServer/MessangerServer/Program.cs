@@ -1,4 +1,6 @@
-﻿namespace MessangerServer
+﻿using MessangerServer.SocketLogic.SocketManager;
+
+namespace MessangerServer
 {
     internal class Program
     {

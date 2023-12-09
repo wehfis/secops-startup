@@ -1,14 +1,17 @@
-﻿using System.Net;
+﻿using MessangerServer.SocketLogic.SocketManager.EventModel;
+using MessangerServer.SocketLogic.SocketManager.ServerEventsHandlers;
+using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Serialization;
+using System.Text.Json;
 
-namespace MessangerServer
+namespace MessangerServer.SocketLogic.SocketManager
 {
     internal class SocketManager
     {
         private TcpClient client;
         public StreamReader STR;
         public StreamWriter STW;
-        public string? recieve;
         public string? TextToSend;
         const int LISTENING_PORT = 80;
         IPAddress LISTENING_ADDRESS;
@@ -50,12 +53,18 @@ namespace MessangerServer
                 {
                     if (STR.Peek() >= 0)
                     {
-                        recieve = await STR.ReadLineAsync();
-                        if (recieve != null && recieve != "")
+                        string? recieve = await STR.ReadLineAsync();
+                        if (!string.IsNullOrEmpty(recieve))
                         {
-                            Console.WriteLine($"You received {recieve}");
+                            Console.WriteLine($"Server received {recieve}");
+                            Event? receivedEvent = JsonSerializer.Deserialize<Event>(recieve);
+                            switch (receivedEvent?.EventType)
+                            {
+                                case EventType.Login:
+                                    AuthenticationHandler.HandleLogin(receivedEvent);
+                                    break;
+                            }
                         }
-                        recieve = "";
                     }
                 }
                 catch (Exception ex)
