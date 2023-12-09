@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Sockets;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using MessengerApp.ClientSocketLogic.EventModel;
 using MessengerApp.ClientSocketLogic.ClientEventsGenerators;
@@ -20,7 +17,7 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
         private readonly StreamReader? STR;
         private readonly StreamWriter? STW;
         private readonly TcpClient client;
-        public Event? eventToSend = AuthEventGenerator.GenerateLoginEvent("andrii", "mysecretpassword");
+        public Event? eventToSend;
 
         public ClientSocketManager()
         {

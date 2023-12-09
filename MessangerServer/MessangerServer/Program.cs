@@ -1,4 +1,4 @@
-﻿using MessangerServer.SocketLogic.SocketManager;
+﻿using MessangerServer.SocketLogic;
 
 namespace MessangerServer
 {
@@ -6,8 +6,8 @@ namespace MessangerServer
     {
         static void Main(string[] args)
         {
-            SocketManager socketManager = new SocketManager();
-            socketManager.StartServer();
+            SocketInitializer.InitializeSocket();
+            SocketInitializer.serverSocketManager.StartServer();
         }
     }
 }

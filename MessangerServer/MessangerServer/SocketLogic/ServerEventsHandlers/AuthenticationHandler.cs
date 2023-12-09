@@ -1,11 +1,4 @@
-﻿using MessangerServer.SocketLogic.SocketManager.EventModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MessangerServer.SocketLogic.SocketManager.ServerEventsHandlers
+﻿namespace MessangerServer.SocketLogic
 {
     public static class AuthenticationHandler
     {

@@ -1,13 +1,10 @@
-﻿using MessangerServer.SocketLogic.SocketManager.EventModel;
-using MessangerServer.SocketLogic.SocketManager.ServerEventsHandlers;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
-using System.Runtime.Serialization;
 using System.Text.Json;
 
-namespace MessangerServer.SocketLogic.SocketManager
+namespace MessangerServer.SocketLogic
 {
-    internal class SocketManager
+    public class SocketManager
     {
         private TcpClient client;
         public StreamReader STR;
@@ -38,13 +35,13 @@ namespace MessangerServer.SocketLogic.SocketManager
             STW.AutoFlush = true;
         }
 
-        internal void StartServer()
+        public void StartServer()
         {
             var receiveTask = Task.Run(() => BackgroundRecieveListening());
             var sendTask = Task.Run(() => BackgroundSendListening());
             Task.WhenAll(receiveTask, sendTask).GetAwaiter().GetResult();
         }
-        internal async Task BackgroundRecieveListening()
+        public async Task BackgroundRecieveListening()
         {
             Console.WriteLine($"BackgroundRecieveListening. Client is connected: {client.Connected}");
             while (client.Connected)
@@ -79,7 +76,7 @@ namespace MessangerServer.SocketLogic.SocketManager
             this.eventToSend = eventObj;
         }
 
-        internal async Task BackgroundSendListening()
+        public async Task BackgroundSendListening()
         {
             Console.WriteLine($"BackgroundSendListening. Client is connected: {client.Connected}");
             while (client.Connected)

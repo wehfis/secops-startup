@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MessangerServer.SocketLogic.SocketManager.EventModel
+namespace MessangerServer.SocketLogic
 {
     [Serializable]
     public class Event
