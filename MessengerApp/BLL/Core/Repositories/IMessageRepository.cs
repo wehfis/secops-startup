@@ -9,5 +9,6 @@ namespace BLL.Core.Repositories
 {
     public interface IMessageRepository: IRepository<Message>
     {
+        IEnumerable<Message> GetMessagesFromDialog(long DialogId);
     }
 }
