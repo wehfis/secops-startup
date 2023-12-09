@@ -52,7 +52,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button FontSize="24 " Foreground="#005E63" Click="Button_Click_1" Grid.Column="0">
+                    <Button FontSize="24 " Foreground="#005E63" Grid.Column="0">
                         Settings
                         <Button.Style>
                             <Style TargetType="Button">
@@ -73,7 +73,7 @@
                         </Button.Template>
                     </Button>
 
-                    <Button FontSize="24" Foreground="#EDFDFA" Click="Button_Click" Grid.Column="1">
+                    <Button FontSize="24" Foreground="#EDFDFA" Grid.Column="1">
                         Log out
                         <Button.Style>
                             <Style TargetType="Button">
@@ -101,7 +101,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button FontSize="24 " Foreground="#EDFDFA" Click="Button_Click_1" Grid.Column="0">
+                    <Button FontSize="24 " Foreground="#EDFDFA" Grid.Column="0">
                         Contacts
                         <Button.Style>
                             <Style TargetType="Button">
@@ -122,7 +122,7 @@
                         </Button.Template>
                     </Button>
 
-                    <Button FontSize="24" Foreground="#005E63" Click="Button_Click" Grid.Column="1">
+                    <Button FontSize="24" Foreground="#005E63" Grid.Column="1">
                         Groups
                         <Button.Style>
                             <Style TargetType="Button">
