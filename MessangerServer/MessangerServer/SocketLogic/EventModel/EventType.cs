@@ -9,6 +9,8 @@ namespace MessangerServer.SocketLogic
     public enum EventType
     {
         Login,
-        Register
+        LoginResponse,
+        Register,
+        RegisterResponse,
     }
 }
