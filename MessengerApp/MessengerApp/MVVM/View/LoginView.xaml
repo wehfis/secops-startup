@@ -30,7 +30,8 @@
                     <TextBlock FontSize="44" TextAlignment="Center" Margin="0 20 0 10" Foreground="#005E63">
                     Log In
                     </TextBlock>
-                    <TextBox 
+                    <TextBox
+                        x:Name="emailTextBox"
                         Text = "{Binding Name}"
                         Width="400" 
                         Height="47.06" 
@@ -42,7 +43,8 @@
                         VerticalContentAlignment="Center"
                         Margin="0 20 0 0"/>
 
-                    <TextBox Width="400" 
+                    <TextBox Width="400"
+                        x:Name="passwordTextBox"
                         Height="47.06" 
                         BorderBrush="#005E63"
                         BorderThickness="2"
@@ -53,7 +55,7 @@
                         Margin="0 20 0 0">
                         password
                     </TextBox>
-                    <Button Margin=" 0 30 0 0" FontSize="18" Foreground="White">
+                    <Button Margin=" 0 30 0 0" FontSize="18" Foreground="White" Click="Button_Click">
                         log in
                         <Button.Style>
                             <Style TargetType="Button">

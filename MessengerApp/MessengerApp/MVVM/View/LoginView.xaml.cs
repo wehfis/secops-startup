@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using MessengerApp.ClientSocketLogic.ClientEventsGenerators;
+using MessengerApp.ClientSocketLogic.ClientSocketManager;
+using MessengerApp.ClientSocketLogic.EventModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MessengerApp.MVVM.View
@@ -21,6 +24,14 @@ namespace MessengerApp.MVVM.View
             {
                 DragMove();
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string email = emailTextBox.Text;
+            string password = passwordTextBox.Text;
+            Event generatedEvent = AuthEventGenerator.GenerateLoginEvent(email, password);
+            SocketInitializer.clientSocketManager.SendEvent(generatedEvent);
         }
     }
     public class Person
