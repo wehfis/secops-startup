@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Persistence.Repositories
 {
-    internal class DialogRepository : Repository<Dialog>, IDialogRepository
+    public class DialogRepository : Repository<Dialog>, IDialogRepository
     {
         public DialogRepository(DbAplicationContext context) : base(context)
         {

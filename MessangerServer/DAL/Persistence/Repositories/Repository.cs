@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Persistence.Repositories
 {
-    internal class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         protected readonly DbAplicationContext Context;
         public Repository(DbAplicationContext context)
@@ -28,6 +28,11 @@ namespace DAL.Persistence.Repositories
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
             return Context.Set<TEntity>().Where(predicate);
+        }
+
+        public TEntity? FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Context.Set<TEntity>().FirstOrDefault(predicate);
         }
 
         public void Add(TEntity entity)

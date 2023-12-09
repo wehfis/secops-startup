@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Persistence.Repositories
 {
-    internal class MessageRepository : Repository<Message>, IMessageRepository
+    public class MessageRepository : Repository<Message>, IMessageRepository
     {
         public MessageRepository(DbAplicationContext context) : base(context)
         {
