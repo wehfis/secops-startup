@@ -22,20 +22,17 @@ namespace MessengerApp.MVVM.View
         public WelcomeView()
         {
             InitializeComponent();
+            WindowManager.SetCurrentWindow = this;
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)
         {
-            SignUpView newWindow = new SignUpView();
-            newWindow.Show();
-            this.Close();
+            WindowManager.RedirectToRegister();
         }
 
         public void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            LoginView newWindow = new LoginView();
-            newWindow.Show();
-            this.Close();
+            WindowManager.RedirectToLogin();
         }
     }
 }

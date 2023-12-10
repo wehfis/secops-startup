@@ -63,24 +63,21 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
             {
                 try
                 {
-                    if (STR?.Peek() >= 0)
+                    string? recieve = await STR.ReadLineAsync();
+                    if (!string.IsNullOrEmpty(recieve))
                     {
-                        string? recieve = await STR.ReadLineAsync();
-                        if (!string.IsNullOrEmpty(recieve))
+                        Event? receivedEvent = JsonSerializer.Deserialize<Event>(recieve);
+                        switch (receivedEvent?.EventType)
                         {
-                            Event? receivedEvent = JsonSerializer.Deserialize<Event>(recieve);
-                            switch (receivedEvent?.EventType)
-                            {
-                                case EventType.Login:
-                                    // handle incoming events
-                                    break;
-                                case EventType.RegisterRedirect:
-                                    RedirectHandlers.RegisterRedirect();
-                                    break;
-                                case EventType.LoginRedirect:
-                                    RedirectHandlers.LoginRedirect();
-                                    break;
-                            }
+                            case EventType.Login:
+                                // handle incoming events
+                                break;
+                            case EventType.RegisterRedirect:
+                                RedirectHandlers.RegisterRedirect();
+                                break;
+                            case EventType.LoginRedirect:
+                                RedirectHandlers.LoginRedirect();
+                                break;
                         }
                     }
                     await Task.Delay(100);
