@@ -12,7 +12,7 @@ namespace MessengerApp.ClientSocketLogic.EventModel
         LoginErrorResponse,
         LoginSucessResponse,
         Register,
-        RegisterResponse,
-        RegisterRedirect
+        RegisterErrorResponse,
+        RegisterSucessResponse
     }
 }

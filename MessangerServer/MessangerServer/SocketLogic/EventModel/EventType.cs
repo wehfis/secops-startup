@@ -12,7 +12,7 @@ namespace MessangerServer.SocketLogic
         LoginErrorResponse,
         LoginSucessResponse,
         Register,
-        RegisterResponse,
-        RegisterRedirect
+        RegisterErrorResponse,
+        RegisterSucessResponse
     }
 }

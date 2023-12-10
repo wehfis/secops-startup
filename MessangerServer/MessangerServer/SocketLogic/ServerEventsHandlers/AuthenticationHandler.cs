@@ -43,7 +43,7 @@ namespace MessangerServer.SocketLogic
             if (newUser.FirstOrDefault(user => user.Email == email) != null)
             {
                 var message = "This user is already exist!";
-                var responseEvent = ResponseGenerator.GenerateErrorResponse(EventType.RegisterResponse, message);
+                var responseEvent = ResponseGenerator.GenerateErrorResponse(EventType.RegisterErrorResponse, message);
                 SocketInitializer.serverSocketManager.SendEvent(responseEvent);
             }
             else
@@ -54,7 +54,7 @@ namespace MessangerServer.SocketLogic
                 registerContext.SaveChanges();
                 registerContext.Dispose();
 
-                var sucessResponseEvent = ResponseGenerator.GenerateSucessResponse(EventType.RegisterRedirect, userEntity);
+                var sucessResponseEvent = ResponseGenerator.GenerateSucessResponse(EventType.RegisterSucessResponse, userEntity);
                 SocketInitializer.serverSocketManager.SendEvent(sucessResponseEvent);
             }
         }

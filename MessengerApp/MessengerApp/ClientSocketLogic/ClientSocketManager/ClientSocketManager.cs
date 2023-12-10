@@ -70,13 +70,14 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
                         switch (receivedEvent?.EventType)
                         {
                             case EventType.Login:
-                                // handle incoming events
                                 break;
-                            case EventType.RegisterRedirect:
-                                RedirectHandlers.RedirectToMain();
+                            case EventType.LoginSucessResponse:
+                                ResponseHandlers.SucessReponseHandler(receivedEvent);
                                 break;
-                            case EventType.LoginRedirect:
-                                RedirectHandlers.RedirectToMain();
+                            case EventType.RegisterSucessResponse:
+                                ResponseHandlers.SucessReponseHandler(receivedEvent);
+                                break;
+                            case EventType.LoginErrorResponse:
                                 break;
                         }
                     }
