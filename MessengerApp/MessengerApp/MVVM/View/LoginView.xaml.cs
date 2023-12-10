@@ -28,10 +28,47 @@ namespace MessengerApp.MVVM.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            validateTextBoxes();
+
             string email = emailTextBox.Text;
             string password = passwordTextBox.Text;
+
             Event generatedEvent = AuthEventGenerator.GenerateLoginEvent(email, password);
             SocketInitializer.clientSocketManager.SendEvent(generatedEvent);
+        }
+
+        public void validateTextBoxes()
+        {
+            string email = emailTextBox.Text;
+            string password = passwordTextBox.Text;
+
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                emailErrorLabel.Text = "Email cannot be empty.";
+            }
+            else
+            {
+                emailErrorLabel.Text = "";
+            }
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                passwordErrorLabel.Text = "Password cannot be empty.";
+            }
+            else
+            {
+                passwordErrorLabel.Text = "";
+            }
+            setCustomError("Andrii LOX");
+
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            {
+                return;
+            }
+        }
+        public void setCustomError(string errorMessage)
+        {
+            anotherErrorLabel.Text = errorMessage;
         }
     }
     public class Person

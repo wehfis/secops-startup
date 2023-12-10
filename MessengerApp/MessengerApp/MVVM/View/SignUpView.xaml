@@ -44,6 +44,7 @@
                         Margin="0 20 0 0">
                         email address
                     </TextBox>
+                    <TextBlock x:Name="emailErrorLabel" Foreground="Red" FontSize="10" TextAlignment="Center" Margin="0,5,0,0"/>
                     <TextBox Width="400"
                         x:Name="nicknameTextBox"
                         Height="47.06" 
@@ -56,6 +57,7 @@
                         Margin="0 20 0 0">
                         nickname
                     </TextBox>
+                    <TextBlock x:Name="nicknameErrorLabel" Foreground="Red" FontSize="10" TextAlignment="Center" Margin="0,5,0,0"/>
                     <TextBox Width="400"
                         x:Name="passwordTextBox"
                         Height="47.06" 
@@ -68,17 +70,8 @@
                         Margin="0 20 0 0">
                         password
                     </TextBox>
-                    <TextBox Width="400" 
-                        Height="47.06" 
-                        BorderBrush="#005E63"
-                        BorderThickness="2"
-                        Background="Transparent"
-                        FontSize="18"
-                        Foreground="#499C9D"
-                        VerticalContentAlignment="Center"
-                        Margin="0 20 0 0">
-                        repeat password
-                    </TextBox>
+                    <TextBlock x:Name="passwordErrorLabel" Foreground="Red" FontSize="10" TextAlignment="Center" Margin="0,5,0,0"/>
+                    <TextBlock x:Name="anotherErrorLabel" Foreground="Red" FontSize="10" TextAlignment="Center" Margin="0,5,0,0"/>
                     <Button x:Name="Submit_register_button" Margin=" 0 20 0 0" FontSize="18" Foreground="White" Click="Button_Click">
                         continue
                         <Button.Style>
