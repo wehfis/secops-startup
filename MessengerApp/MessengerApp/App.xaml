@@ -1,7 +1,6 @@
 ﻿<Application x:Class="MessengerApp.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-             xmlns:local="clr-namespace:DAL.DBContex;assembly=DAL"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              StartupUri="MVVM/View/WelcomeView.xaml">
     <Application.Resources>

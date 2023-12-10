@@ -24,7 +24,8 @@ namespace MessangerServer.SocketLogic
             {
                 // return Response;
             }
-            // return Response (redirect to main page)
+            var redirectEvent = ResponseGenerator.GenerateRedirect(EventType.LoginRedirect);
+            SocketInitializer.serverSocketManager.SendEvent(redirectEvent);
         }
 
         public static void HandleRegister(Event eventParam)
