@@ -162,8 +162,8 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="../../Images/Profile_skeletone.png" Width="80" Height="80" Margin="5"/>
                                     <StackPanel Margin="10 20 0 0 ">
-                                        <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="Bold" Foreground="#EDFDFA"/>
-                                        <TextBlock Margin="0 10 0 0" FontSize="14" Text="{Binding Description}" TextWrapping="Wrap" Foreground="#EDFDFA"/>
+                                        <TextBlock Text="{Binding Nickname}" FontSize="14" FontWeight="Bold" Foreground="#EDFDFA"/>
+                                        <TextBlock Margin="0 10 0 0" FontSize="14" Text="{Binding Email}" TextWrapping="Wrap" Foreground="#EDFDFA"/>
                                     </StackPanel>
                                 </StackPanel>
                             </Border>

@@ -11,6 +11,8 @@ namespace MessengerApp.ClientSocketLogic.EventModel
         Login,
         LoginErrorResponse,
         LoginSucessResponse,
+        GetAllUsersExceptCurrent,
+        Error,
         Register,
         RegisterErrorResponse,
         RegisterSucessResponse

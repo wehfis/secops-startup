@@ -13,9 +13,9 @@ namespace MessengerApp.ClientSocketLogic.ClientEventsGenerators
         {
             return new Event
             {
-                EventType = EventType.Login,
+                EventType = EventType.GetAllUsersExceptCurrent,
                 Parameters = new Dictionary<string, object> {
-                { "currentUserEmail", email }
+                { "email", email }
             }
             };
         }

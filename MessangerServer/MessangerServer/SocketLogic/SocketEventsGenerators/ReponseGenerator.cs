@@ -33,13 +33,13 @@ namespace MessangerServer.SocketLogic.SocketEventsGenerators
             };
         }
 
-        public static Event GetAllUsersExceptCurrentResponse(EventType eventType, IEnumerable<User> users)
+        public static Event GetAllUsersExceptCurrentResponse(IEnumerable<User> users)
         {
             return new Event
             {
-                EventType = eventType,
+                EventType = EventType.GetAllUsersExceptCurrent,
                 Parameters = new Dictionary<string, object> {
-                        { "Users", users }
+                        { "users", users.ToList() }
                 }
             };
         }

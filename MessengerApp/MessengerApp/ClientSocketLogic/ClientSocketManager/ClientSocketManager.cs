@@ -83,6 +83,9 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
                             case EventType.RegisterErrorResponse:
                                 ResponseHandlers.SignUpErrorReponseHandler(receivedEvent);
                                 break;
+                            case EventType.GetAllUsersExceptCurrent:
+                                ResponseHandlers.UsersExceptCurrentResponse(receivedEvent);
+                                break;
                         }
                     }
                     await Task.Delay(100);

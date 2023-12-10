@@ -1,4 +1,5 @@
-﻿using MessengerApp.MVVM.View;
+﻿using MessengerApp.ClientSocketLogic.Models;
+using MessengerApp.MVVM.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,18 @@ namespace MessengerApp.MVVM
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     tryCastWindow.setCustomError(message);
+                });
+            }
+        }
+
+        public static void SetMainViewUsers(List<User> users)
+        {
+            var tryCastWindow = currentWindow as MainView;
+            if (tryCastWindow != null)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    tryCastWindow.SetAviableUsers(users);
                 });
             }
         }

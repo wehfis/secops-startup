@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using MessangerServer.SocketLogic.ServerEventsHandlers;
+using System.Net;
 using System.Net.Sockets;
 using System.Text.Json;
 
@@ -60,6 +61,9 @@ namespace MessangerServer.SocketLogic
                                 break;
                             case EventType.Register:
                                 AuthenticationHandler.HandleRegister(receivedEvent);
+                                break;
+                            case EventType.GetAllUsersExceptCurrent:
+                                DataRequestHandler.HandleGetAllUsersExceptCurrent(receivedEvent);
                                 break;
                         }
                     }

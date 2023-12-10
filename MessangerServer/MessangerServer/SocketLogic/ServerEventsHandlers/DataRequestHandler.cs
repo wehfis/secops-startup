@@ -20,7 +20,6 @@ namespace MessangerServer.SocketLogic.ServerEventsHandlers
             IUserRepository userRepository = new UserRepository(Context);
 
             string email = eventParam.Parameters["email"].ToString();
-            string password = eventParam.Parameters["password"].ToString();
 
             var tryGetUser = userRepository.Find(user => user.Email != email );
             if (tryGetUser == null)
@@ -31,7 +30,7 @@ namespace MessangerServer.SocketLogic.ServerEventsHandlers
             }
             else
             {
-                var sucessResponseEvent = ResponseGenerator.GetAllUsersExceptCurrentResponse(EventType.GetAllUsersExceptCurrent, tryGetUser);
+                var sucessResponseEvent = ResponseGenerator.GetAllUsersExceptCurrentResponse(tryGetUser);
                 SocketInitializer.serverSocketManager.SendEvent(sucessResponseEvent);
             }
         }
