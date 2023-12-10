@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MessengerApp.MVVM.View"
         mc:Ignorable="d"
-        Title="WelcomeView" Height="800" Width="1500">
+        Title="WelcomeView" Height="800" Width="1500" MinWidth="600" MinHeight="450"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Montserat"
+        FontWeight="SemiBold">
     <Border>
         <Border.Background>
             <ImageBrush ImageSource="../../Images/Background.jpg" Stretch="None"/>

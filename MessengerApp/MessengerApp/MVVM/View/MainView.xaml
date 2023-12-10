@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MessengerApp.MVVM.View"
         mc:Ignorable="d"
-        Title="MainView" Height="900" Width="1500">
+        Title="MainView" Height="900" Width="1500"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Montserat"
+        FontWeight="SemiBold">
     <Window.Resources>
         <!-- Define a DataTemplate as a resource -->
         <DataTemplate x:Key="CustomItemTemplate">
