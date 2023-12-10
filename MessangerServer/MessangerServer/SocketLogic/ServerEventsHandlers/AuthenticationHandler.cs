@@ -21,7 +21,7 @@ namespace MessangerServer.SocketLogic
             var tryGetUser = userRepository.FirstOrDefault(user => user.Email == email && user.Password == password);
             if (tryGetUser == null)
             {
-                var message = "User with this email is not registered exist!";
+                var message = "User with this email is not exist!";
                 var response = ResponseGenerator.GenerateErrorResponse(EventType.LoginErrorResponse, message);
                 SocketInitializer.serverSocketManager.SendEvent(response);
             }

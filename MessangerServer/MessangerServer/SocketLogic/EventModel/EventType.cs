@@ -11,6 +11,8 @@ namespace MessangerServer.SocketLogic
         Login,
         LoginErrorResponse,
         LoginSucessResponse,
+        GetAllUsersExceptCurrent,
+        Error,
         Register,
         RegisterErrorResponse,
         RegisterSucessResponse
