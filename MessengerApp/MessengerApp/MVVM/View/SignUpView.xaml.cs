@@ -39,6 +39,11 @@ namespace MessengerApp.MVVM.View
             SocketInitializer.clientSocketManager.SendEvent(generatedEvent);
         }
 
+
+        private void Back_Button_Click(object sender, RoutedEventArgs e)
+        {
+            WindowManager.RedirectToAnotherwindow<WelcomeView>();
+        }
         public void validateTextBoxes()
         {
             string email = emailTextBox.Text;

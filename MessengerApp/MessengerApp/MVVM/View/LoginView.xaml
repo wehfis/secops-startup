@@ -27,7 +27,30 @@
 
             <Border BorderThickness="1" CornerRadius="21 " Background="#EDFDFA" Grid.Column="1" Grid.Row="1">
                 <StackPanel>
-                    <Border Height="60" Background="#005E63" Panel.ZIndex="2" Canvas.Top="0" CornerRadius="20 20 0 0" />
+                    <Border Height="60" Background="#005E63" Panel.ZIndex="2" Canvas.Top="0" CornerRadius="20 20 0 0" >
+                        <Grid HorizontalAlignment="Left">
+                            <Button Margin="20 0 0 0" FontSize="18" Foreground="#005E63" Click="Back_Button_Click">
+                                Back
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="White"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Width="100" Height="30" CornerRadius="9" Background="White">
+                                            <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Grid>
+                    </Border>
                     <TextBlock FontSize="44" TextAlignment="Center" Margin="0 20 0 10" Foreground="#005E63">
                     Log In
                     </TextBlock>
