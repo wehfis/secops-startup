@@ -9,8 +9,8 @@ namespace MessengerApp.ClientSocketLogic.EventModel
     public enum EventType
     {
         Login,
-        LoginResponse,
-        LoginRedirect,
+        LoginErrorResponse,
+        LoginSucessResponse,
         Register,
         RegisterResponse,
         RegisterRedirect

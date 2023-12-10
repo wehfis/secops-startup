@@ -12,20 +12,24 @@ namespace MessangerServer.SocketLogic
 
         public static void HandleLogin(Event eventParam)
         {
-            // get email + password from eventParam dictionary
-            // handle login with checking data base for this user
             DbAplicationContext loginContext = new DbAplicationContext();
-            IUserRepository existingUser = new UserRepository(loginContext);
+            IUserRepository userRepository = new UserRepository(loginContext);
 
             string email = eventParam.Parameters["email"].ToString();
             string password = eventParam.Parameters["password"].ToString();
 
-            if (existingUser.FirstOrDefault(user => user.Username == email) == null)
+            var tryGetUser = userRepository.FirstOrDefault(user => user.Email == email && user.Password == password);
+            if (tryGetUser == null)
             {
-                // return Response;
+                var message = "User with this email is not registered exist!";
+                var response = ResponseGenerator.GenerateErrorResponse(EventType.LoginErrorResponse, message);
+                SocketInitializer.serverSocketManager.SendEvent(response);
             }
-            var redirectEvent = ResponseGenerator.GenerateRedirect(EventType.LoginRedirect);
-            SocketInitializer.serverSocketManager.SendEvent(redirectEvent);
+            else
+            {
+                var sucessResponseEvent = ResponseGenerator.GenerateSucessResponse(EventType.LoginSucessResponse, tryGetUser);
+                SocketInitializer.serverSocketManager.SendEvent(sucessResponseEvent);
+            }
         }
 
         public static void HandleRegister(Event eventParam)
@@ -36,22 +40,23 @@ namespace MessangerServer.SocketLogic
             string email = eventParam.Parameters["email"].ToString();
             string password = eventParam.Parameters["password"].ToString();
 
-            if (newUser.FirstOrDefault(user => user.Username == email) != null)
+            if (newUser.FirstOrDefault(user => user.Email == email) != null)
             {
                 var message = "This user is already exist!";
-                var responseEvent = ResponseGenerator.GenerateResponse(EventType.RegisterResponse, message);
+                var responseEvent = ResponseGenerator.GenerateErrorResponse(EventType.RegisterResponse, message);
                 SocketInitializer.serverSocketManager.SendEvent(responseEvent);
             }
+            else
+            {
+                User userEntity = new User { Email = email, Password = password };
 
-            User userEntity = new User { Username = email, Password = password, Role = UserRole.User };
+                newUser.Add(userEntity);
+                registerContext.SaveChanges();
+                registerContext.Dispose();
 
-            newUser.Add(userEntity);
-            registerContext.SaveChanges();
-            registerContext.Dispose();
-
-            var redirectEvent = ResponseGenerator.GenerateRedirect(EventType.RegisterRedirect);
-            SocketInitializer.serverSocketManager.SendEvent(redirectEvent);
-
+                var sucessResponseEvent = ResponseGenerator.GenerateSucessResponse(EventType.RegisterRedirect, userEntity);
+                SocketInitializer.serverSocketManager.SendEvent(sucessResponseEvent);
+            }
         }
     }
 }

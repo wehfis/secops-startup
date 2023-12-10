@@ -16,30 +16,26 @@ namespace DAL.DBContext
                 new User
                 {
                     Id = 1,
-                    Username = "William",
-                    Password = "sifjokasfp212",
-                    Role = UserRole.User
+                    Email = "William",
+                    Password = "sifjokasfp212"
                 },
                 new User
                 {
                     Id = 2,
-                    Username = "John",
-                    Password = "12312sadads",
-                    Role = UserRole.User
+                    Email = "John",
+                    Password = "12312sadads"
                 },
                 new User
                 {
                     Id = 3,
-                    Username = "Alex",
-                    Password = "asjdgukah19091",
-                    Role = UserRole.Admin
+                    Email = "Alex",
+                    Password = "asjdgukah19091"
                 },
                 new User
                 {
                     Id = 4,
-                    Username = "Jane",
-                    Password = "sasfjguahs21",
-                    Role = UserRole.Moderator
+                    Email = "Jane",
+                    Password = "sasfjguahs21"
                 }
             );
             modelBuilder.Entity<Dialog>().HasData(
