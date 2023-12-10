@@ -33,6 +33,16 @@ namespace MessengerApp.MVVM.View
             Event generatedEvent = AuthEventGenerator.GenerateLoginEvent(email, password);
             SocketInitializer.clientSocketManager.SendEvent(generatedEvent);
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Back_Button_Click(object sender, RoutedEventArgs e)
+        {
+            WindowManager.RedirectToAnotherwindow<WelcomeView>();
+        }
     }
     public class Person
     {

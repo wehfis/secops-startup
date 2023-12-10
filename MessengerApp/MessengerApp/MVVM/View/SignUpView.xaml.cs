@@ -35,5 +35,10 @@ namespace MessengerApp.MVVM.View
             Event generatedEvent = AuthEventGenerator.GenerateRegisterEvent(email, nickname, password);
             SocketInitializer.clientSocketManager.SendEvent(generatedEvent);
         }
+
+        private void Back_Button_Click(object sender, RoutedEventArgs e)
+        {
+            WindowManager.RedirectToAnotherwindow<WelcomeView>();
+        }
     }
 }
