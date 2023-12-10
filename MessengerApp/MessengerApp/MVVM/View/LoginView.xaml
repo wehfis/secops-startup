@@ -21,7 +21,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition Height="400"/>
+                <RowDefinition Height="450"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
@@ -66,7 +66,7 @@
                         Foreground="#499C9D"
                         VerticalContentAlignment="Center"
                         Margin="0 20 0 0"/>
-
+                    <TextBlock x:Name="emailErrorLabel" Foreground="Red" FontSize="10" TextAlignment="Center" Margin="0,5,0,0"/>
                     <TextBox Width="400"
                         x:Name="passwordTextBox"
                         Height="47.06" 
@@ -79,6 +79,8 @@
                         Margin="0 20 0 0">
                         password
                     </TextBox>
+                    <TextBlock x:Name="passwordErrorLabel" Foreground="Red" FontSize="10" TextAlignment="Center" Margin="0,5,0,0"/>
+                    <TextBlock x:Name="anotherErrorLabel" Foreground="Red" FontSize="10" TextAlignment="Center" Margin="0,5,0,0"/>
                     <Button Margin=" 0 30 0 0" FontSize="18" Foreground="White" Click="Button_Click">
                         log in
                         <Button.Style>
@@ -107,4 +109,5 @@
         </Grid>
     </Border>
 </Window>
+    
  
