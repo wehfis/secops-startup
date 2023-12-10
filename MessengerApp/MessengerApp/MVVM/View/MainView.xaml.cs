@@ -37,6 +37,14 @@ namespace MessengerApp.MVVM.View
             // Add some sample data (you can replace this with your dynamic data)
             Items.Add(new CustomItem { Name = "Item 1", Description = "Description for Item 1" });
             Items.Add(new CustomItem { Name = "Item 2", Description = "Description for Item 2" });
+            Items.Add(new CustomItem { Name = "Item 1", Description = "Description for Item 1" });
+            Items.Add(new CustomItem { Name = "Item 2", Description = "Description for Item 2" });
+            Items.Add(new CustomItem { Name = "Item 1", Description = "Description for Item 1" });
+            Items.Add(new CustomItem { Name = "Item 2", Description = "Description for Item 2" });
+            Items.Add(new CustomItem { Name = "Item 1", Description = "Description for Item 1" });
+            Items.Add(new CustomItem { Name = "Item 2", Description = "Description for Item 2" });
+            Items.Add(new CustomItem { Name = "Item 1", Description = "Description for Item 1" });
+            Items.Add(new CustomItem { Name = "Item 2", Description = "Description for Item 2" });
         }
     }
 }
