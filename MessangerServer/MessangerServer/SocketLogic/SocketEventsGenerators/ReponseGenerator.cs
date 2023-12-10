@@ -28,7 +28,8 @@ namespace MessangerServer.SocketLogic.SocketEventsGenerators
                 EventType = eventType,
                 Parameters = new Dictionary<string, object> {
                 { "email", user.Email },
-                { "password", user.Password },
+                { "nickname", user.Nickname },
+                { "password", user.Password }
             }
             };
         }
