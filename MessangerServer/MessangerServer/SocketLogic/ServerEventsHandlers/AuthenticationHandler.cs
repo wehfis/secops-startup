@@ -16,6 +16,7 @@ namespace MessangerServer.SocketLogic
             IUserRepository userRepository = new UserRepository(loginContext);
 
             string email = eventParam.Parameters["email"].ToString();
+            string nickname = eventParam.Parameters["nickname"].ToString();
             string password = eventParam.Parameters["password"].ToString();
 
             var tryGetUser = userRepository.FirstOrDefault(user => user.Email == email && user.Password == password);
