@@ -18,33 +18,11 @@ namespace MessengerApp.MVVM
             set { currentWindow = value; }
         }
 
-        public static void RedirectToMain()
+        public static void RedirectToAnotherwindow<TWindow>() where TWindow : Window, new()
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                MainView newWindow = new MainView();
-                newWindow.Show();
-                currentWindow.Close();
-                currentWindow = newWindow;
-            });
-        }
-
-        public static void RedirectToLogin()
-        {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                LoginView newWindow = new LoginView();
-                newWindow.Show();
-                currentWindow.Close();
-                currentWindow = newWindow;
-            });
-        }
-
-        public static void RedirectToRegister()
-        {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                SignUpView newWindow = new SignUpView();
+                TWindow newWindow = new TWindow();
                 newWindow.Show();
                 currentWindow.Close();
                 currentWindow = newWindow;

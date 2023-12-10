@@ -10,13 +10,9 @@ namespace MessengerApp.ClientSocketLogic.ClientEventsHandlers
 {
     public static class RedirectHandlers
     {
-        public static void LoginRedirect()
+        public static void RedirectToMain()
         {
-            WindowManager.RedirectToMain();
-        }
-        public static void RegisterRedirect()
-        {
-            WindowManager.RedirectToMain();
+            WindowManager.RedirectToAnotherwindow<MainView>();
         }
     }
 }

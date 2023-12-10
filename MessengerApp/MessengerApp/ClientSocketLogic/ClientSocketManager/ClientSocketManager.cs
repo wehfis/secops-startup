@@ -73,10 +73,10 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
                                 // handle incoming events
                                 break;
                             case EventType.RegisterRedirect:
-                                RedirectHandlers.RegisterRedirect();
+                                RedirectHandlers.RedirectToMain();
                                 break;
                             case EventType.LoginRedirect:
-                                RedirectHandlers.LoginRedirect();
+                                RedirectHandlers.RedirectToMain();
                                 break;
                         }
                     }

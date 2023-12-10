@@ -27,12 +27,12 @@ namespace MessengerApp.MVVM.View
 
         public void Button_Click(object sender, RoutedEventArgs e)
         {
-            WindowManager.RedirectToRegister();
+            WindowManager.RedirectToAnotherwindow<SignUpView>();
         }
 
         public void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            WindowManager.RedirectToLogin();
+            WindowManager.RedirectToAnotherwindow<LoginView>();
         }
     }
 }
