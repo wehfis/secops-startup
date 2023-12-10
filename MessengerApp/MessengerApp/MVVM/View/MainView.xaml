@@ -88,7 +88,7 @@
                         </Button.Template>
                     </Button>
 
-                    <Button FontSize="24" Foreground="#EDFDFA" Grid.Column="1">
+                    <Button FontSize="24" Foreground="#EDFDFA" Grid.Column="1" Click="Button_Click">
                         Log out
                         <Button.Style>
                             <Style TargetType="Button">

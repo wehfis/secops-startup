@@ -1,4 +1,6 @@
 ﻿using MessengerApp.ClientSocketLogic.ClientSocketManager;
+using MessengerApp.MVVM;
+using MessengerApp.MVVM.View;
 using System.Windows;
 
 namespace MessengerApp
@@ -12,6 +14,9 @@ namespace MessengerApp
         {
             base.OnStartup(e);
             SocketInitializer.InitializeSocket();
+            WelcomeView welcomeView = new WelcomeView();
+            welcomeView.Show();
+            WindowManager.SetCurrentWindow = welcomeView;
         }
     }
 }

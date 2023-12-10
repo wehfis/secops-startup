@@ -22,7 +22,6 @@ namespace MessengerApp.MVVM.View
         public WelcomeView()
         {
             InitializeComponent();
-            WindowManager.SetCurrentWindow = this;
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)

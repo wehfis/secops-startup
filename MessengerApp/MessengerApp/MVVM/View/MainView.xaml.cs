@@ -46,5 +46,10 @@ namespace MessengerApp.MVVM.View
             Items.Add(new CustomItem { Name = "Item 1", Description = "Description for Item 1" });
             Items.Add(new CustomItem { Name = "Item 2", Description = "Description for Item 2" });
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WindowManager.RedirectToAnotherwindow<WelcomeView>();
+        }
     }
 }
