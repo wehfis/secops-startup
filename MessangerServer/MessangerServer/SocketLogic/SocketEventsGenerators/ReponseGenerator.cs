@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MessangerServer.SocketLogic.SocketEventsGenerators
 {
-    public static class ReponseGenerator
+    public static class ResponseGenerator
     {
         public static Event GenerateResponse(EventType eventType, string message)
         {
@@ -16,6 +16,13 @@ namespace MessangerServer.SocketLogic.SocketEventsGenerators
                 Parameters = new Dictionary<string, object> {
                 { "message", message }
             }
+            };
+        }
+        public static Event GenerateRedirect(EventType eventType)
+        {
+            return new Event
+            {
+                EventType = eventType
             };
         }
     }

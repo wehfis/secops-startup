@@ -3,6 +3,7 @@ using BLL.Core.Domain;
 using BLL.Core.Repositories;
 using DAL.DBContex;
 using DAL.Persistence.Repositories;
+using MessangerServer.SocketLogic.SocketEventsGenerators;
 
 namespace MessangerServer.SocketLogic
 {
@@ -36,7 +37,9 @@ namespace MessangerServer.SocketLogic
 
             if (newUser.FirstOrDefault(user => user.Username == email) != null)
             {
-                // return Response;
+                var message = "This user is already exist!";
+                var responseEvent = ResponseGenerator.GenerateResponse(EventType.RegisterResponse, message);
+                SocketInitializer.serverSocketManager.SendEvent(responseEvent);
             }
 
             User userEntity = new User { Username = email, Password = password, Role = UserRole.User };
@@ -44,7 +47,9 @@ namespace MessangerServer.SocketLogic
             newUser.Add(userEntity);
             registerContext.SaveChanges();
             registerContext.Dispose();
-            // return Response;
+
+            var redirectEvent = ResponseGenerator.GenerateRedirect(EventType.RegisterRedirect);
+            SocketInitializer.serverSocketManager.SendEvent(redirectEvent);
 
         }
     }

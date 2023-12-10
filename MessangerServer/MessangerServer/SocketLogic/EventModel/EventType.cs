@@ -10,7 +10,9 @@ namespace MessangerServer.SocketLogic
     {
         Login,
         LoginResponse,
+        LoginRedirect,
         Register,
         RegisterResponse,
+        RegisterRedirect
     }
 }

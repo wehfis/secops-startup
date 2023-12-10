@@ -24,7 +24,7 @@ namespace MessengerApp.ClientSocketLogic.ClientEventsGenerators
         {
             return new Event
             {
-                EventType = EventType.Login,
+                EventType = EventType.Register,
                 Parameters = new Dictionary<string, object> {
                 { "email", email },
                 { "nickname", nickname },

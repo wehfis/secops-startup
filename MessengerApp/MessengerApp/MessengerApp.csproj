@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientSocketLogic\ClientEventsHandlers\" />
     <Folder Include="MVVM\Model\" />
   </ItemGroup>
 
