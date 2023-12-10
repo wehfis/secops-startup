@@ -44,7 +44,7 @@
                             </Button.Style>
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
-                                    <Border Width="150" Height="47" BorderThickness="2" BorderBrush="#005E63" CornerRadius="9" Background="Transparent">
+                                    <Border Width="150" Height="47" BorderThickness="2" BorderBrush="#005E63" CornerRadius="9">
                                         <ContentPresenter VerticalAlignment="Center"
                                                       HorizontalAlignment="Center"/>
                                     </Border>

@@ -24,14 +24,14 @@ namespace MessengerApp.MVVM.View
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Button_Click(object sender, RoutedEventArgs e)
         {
             SignUpView newWindow = new SignUpView();
             newWindow.Show();
             this.Close();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        public void Button_Click_1(object sender, RoutedEventArgs e)
         {
             LoginView newWindow = new LoginView();
             newWindow.Show();

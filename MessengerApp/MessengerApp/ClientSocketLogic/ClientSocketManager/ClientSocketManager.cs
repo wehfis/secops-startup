@@ -7,6 +7,7 @@ using MessengerApp.ClientSocketLogic.EventModel;
 using MessengerApp.ClientSocketLogic.ClientEventsGenerators;
 using System.Text.Json;
 using System.Configuration;
+using MessengerApp.ClientSocketLogic.ClientEventsHandlers;
 
 namespace MessengerApp.ClientSocketLogic.ClientSocketManager
 {
@@ -72,6 +73,12 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
                             {
                                 case EventType.Login:
                                     // handle incoming events
+                                    break;
+                                case EventType.RegisterRedirect:
+                                    RedirectHandlers.RegisterRedirect();
+                                    break;
+                                case EventType.LoginRedirect:
+                                    RedirectHandlers.LoginRedirect();
                                     break;
                             }
                         }
