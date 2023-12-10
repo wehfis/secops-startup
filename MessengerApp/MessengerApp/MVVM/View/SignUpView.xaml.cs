@@ -50,36 +50,23 @@ namespace MessengerApp.MVVM.View
             string nickname = nicknameTextBox.Text;
             string password = passwordTextBox.Text;
 
+            emailErrorLabel.Text = "";
+            nicknameErrorLabel.Text = "";
+            passwordErrorLabel.Text = "";
+
             if (string.IsNullOrWhiteSpace(email))
             {
                 emailErrorLabel.Text = "Email cannot be empty.";
-            }
-            else
-            {
-                emailErrorLabel.Text = "";
             }
 
             if (string.IsNullOrWhiteSpace(nickname))
             {
                 nicknameErrorLabel.Text = "Email cannot be empty.";
             }
-            else
-            {
-                nicknameErrorLabel.Text = "";
-            }
 
             if (string.IsNullOrWhiteSpace(password))
             {
                 passwordErrorLabel.Text = "Password cannot be empty.";
-            }
-            else
-            {
-                passwordErrorLabel.Text = "";
-            }
-
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(nickname))
-            {
-                return;
             }
         }
 

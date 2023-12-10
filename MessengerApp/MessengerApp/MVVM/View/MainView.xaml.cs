@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessengerApp.Stores;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace MessengerApp.MVVM.View
         public MainView()
         {
             InitializeComponent();
+            userEmailProfileTextBox.Text = UserStore.currentUserEmailState;
             Items = new ObservableCollection<CustomItem>();
             dynamicListBox.ItemsSource = Items;
 

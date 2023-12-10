@@ -5,22 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MessengerApp.MVVM.View"
         mc:Ignorable="d"
-        Title="MainView" Height="900" Width="1500"
+        Title="MainView" Height="800" Width="1500" MinWidth="600" MinHeight="450"
         WindowStartupLocation="CenterScreen"
         FontFamily="Montserat"
         FontWeight="SemiBold">
-    <Window.Resources>
-        <!-- Define a DataTemplate as a resource -->
-        <DataTemplate x:Key="CustomItemTemplate">
-            <Border BorderBrush="Gray" BorderThickness="1" Margin="5">
-                <StackPanel>
-                    <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
-                    <Slider Value="{Binding SliderValue}" Minimum="0" Maximum="100" Width="150"/>
-                </StackPanel>
-            </Border>
-        </DataTemplate>
-    </Window.Resources>
     <Border>
         <Border.Background>
             <ImageBrush ImageSource="../../Images/Background.jpg" Stretch="None"/>
@@ -51,14 +39,10 @@
                             <ImageBrush Stretch="Fill" ImageSource="../../Images/Profile_skeletone.png"/>
                         </Border.Background>
                     </Border>
-                    
-                    <TextBlock FontSize="32" Foreground="#EDFDFA" Grid.Row="0" Grid.Column="1" Margin="5 20 0 0">
-                            Dimass
-                    </TextBlock>
-                    
-                    <TextBlock FontSize="16" Foreground="#EDFDFA" Grid.Row="0" Grid.Column="1" Margin="5 55  0 0">
-                            dimasik2004@gmail.com
-                    </TextBlock>
+
+                    <TextBlock x:Name="userNicknameProfileTextBox" FontSize="32" Foreground="#EDFDFA" Grid.Row="0" Grid.Column="1" Margin="5 20 0 0"/>
+
+                    <TextBlock x:Name="userEmailProfileTextBox" FontSize="16" Foreground="#EDFDFA" Grid.Row="0" Grid.Column="1" Margin="5 55  0 0"/>
                 </Grid>
 
 

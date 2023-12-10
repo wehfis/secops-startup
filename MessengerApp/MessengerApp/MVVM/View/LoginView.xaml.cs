@@ -51,27 +51,17 @@ namespace MessengerApp.MVVM.View
             string email = emailTextBox.Text;
             string password = passwordTextBox.Text;
 
+            emailErrorLabel.Text = "";
+            passwordErrorLabel.Text = "";
+
             if (string.IsNullOrWhiteSpace(email))
             {
                 emailErrorLabel.Text = "Email cannot be empty.";
-            }
-            else
-            {
-                emailErrorLabel.Text = "";
             }
 
             if (string.IsNullOrWhiteSpace(password))
             {
                 passwordErrorLabel.Text = "Password cannot be empty.";
-            }
-            else
-            {
-                passwordErrorLabel.Text = "";
-            }
-
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
-            {
-                return;
             }
         }
         public void setCustomError(string errorMessage)
