@@ -28,5 +28,29 @@ namespace MessengerApp.MVVM
                 currentWindow = newWindow;
             });
         }
+
+        public static void SetLoginViewError(string message) 
+        {
+            var tryCastWindow = currentWindow as LoginView;
+            if(tryCastWindow != null) 
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    tryCastWindow.setCustomError(message);
+                });
+            }
+        }
+
+        public static void SetSignUpViewViewError(string message)
+        {
+            var tryCastWindow = currentWindow as SignUpView;
+            if (tryCastWindow != null)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    tryCastWindow.setCustomError(message);
+                });
+            }
+        }
     }
 }

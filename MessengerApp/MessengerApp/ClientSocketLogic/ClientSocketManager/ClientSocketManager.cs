@@ -78,6 +78,10 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
                                 ResponseHandlers.SucessReponseHandler(receivedEvent);
                                 break;
                             case EventType.LoginErrorResponse:
+                                ResponseHandlers.LoginErrorReponseHandler(receivedEvent);
+                                break;
+                            case EventType.RegisterErrorResponse:
+                                ResponseHandlers.SignUpErrorReponseHandler(receivedEvent);
                                 break;
                         }
                     }

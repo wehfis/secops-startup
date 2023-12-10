@@ -76,7 +76,6 @@ namespace MessengerApp.MVVM.View
             {
                 passwordErrorLabel.Text = "";
             }
-            setCustomError("Andrii LOX");
 
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(nickname))
             {

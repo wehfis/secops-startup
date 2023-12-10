@@ -18,5 +18,14 @@ namespace MessengerApp.ClientSocketLogic.ClientEventsHandlers
             UserStore.currentUserPasswordlState = eventObj.Parameters["password"].ToString();
             WindowManager.RedirectToAnotherwindow<MainView>();
         }
+
+        public static void LoginErrorReponseHandler(Event eventObj)
+        {
+            WindowManager.SetLoginViewError(eventObj.Parameters["message"].ToString());
+        }
+        public static void SignUpErrorReponseHandler(Event eventObj)
+        {
+            WindowManager.SetSignUpViewViewError(eventObj.Parameters["message"].ToString());
+        }
     }
 }
