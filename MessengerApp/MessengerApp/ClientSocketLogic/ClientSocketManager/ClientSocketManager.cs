@@ -71,11 +71,11 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
                         {
                             case EventType.Login:
                                 break;
-                            case EventType.LoginSucessResponse:
-                                ResponseHandlers.SucessReponseHandler(receivedEvent);
+                            case EventType.LoginSucсessResponse:
+                                ResponseHandlers.SucсessReponseHandler(receivedEvent);
                                 break;
-                            case EventType.RegisterSucessResponse:
-                                ResponseHandlers.SucessReponseHandler(receivedEvent);
+                            case EventType.RegisterSuсcessResponse:
+                                ResponseHandlers.SucсessReponseHandler(receivedEvent);
                                 break;
                             case EventType.LoginErrorResponse:
                                 ResponseHandlers.LoginErrorReponseHandler(receivedEvent);

@@ -14,7 +14,7 @@ namespace MessengerApp.ClientSocketLogic.ClientEventsHandlers
 {
     public static class ResponseHandlers
     {
-        public static void SucessReponseHandler(Event eventObj)
+        public static void SucсessReponseHandler(Event eventObj)
         {
             string? email = eventObj.Parameters["email"]?.ToString();
             string? nickname = eventObj.Parameters["nickname"]?.ToString();

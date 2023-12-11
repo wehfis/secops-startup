@@ -21,7 +21,7 @@ namespace MessangerServer.SocketLogic.SocketEventsGenerators
         }
 
         // is used for Login/Register sucess responses
-        public static Event GenerateSucessResponse(EventType eventType, User user)
+        public static Event GenerateSuccessResponse(EventType eventType, User user)
         {
             return new Event
             {

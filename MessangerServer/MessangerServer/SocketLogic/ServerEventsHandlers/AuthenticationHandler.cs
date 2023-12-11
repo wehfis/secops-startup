@@ -27,7 +27,7 @@ namespace MessangerServer.SocketLogic
             }
             else
             {
-                var sucessResponseEvent = ResponseGenerator.GenerateSucessResponse(EventType.LoginSucessResponse, tryGetUser);
+                var sucessResponseEvent = ResponseGenerator.GenerateSuccessResponse(EventType.LoginSuccessResponse, tryGetUser);
                 SocketInitializer.serverSocketManager.SendEvent(sucessResponseEvent);
             }
         }
@@ -38,6 +38,7 @@ namespace MessangerServer.SocketLogic
             IUserRepository newUser = new UserRepository(registerContext);
 
             string email = eventParam.Parameters["email"].ToString();
+            string nickname = eventParam.Parameters["nickname"].ToString();
             string password = eventParam.Parameters["password"].ToString();
 
             if (newUser.FirstOrDefault(user => user.Email == email) != null)
@@ -48,13 +49,13 @@ namespace MessangerServer.SocketLogic
             }
             else
             {
-                User userEntity = new User { Email = email, Password = password };
+                User userEntity = new User { Email = email, Nickname = nickname, Password = password };
 
                 newUser.Add(userEntity);
                 registerContext.SaveChanges();
                 registerContext.Dispose();
 
-                var sucessResponseEvent = ResponseGenerator.GenerateSucessResponse(EventType.RegisterSucessResponse, userEntity);
+                var sucessResponseEvent = ResponseGenerator.GenerateSuccessResponse(EventType.RegisterSuccessResponse, userEntity);
                 SocketInitializer.serverSocketManager.SendEvent(sucessResponseEvent);
             }
         }

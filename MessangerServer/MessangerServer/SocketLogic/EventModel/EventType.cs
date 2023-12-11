@@ -10,11 +10,11 @@ namespace MessangerServer.SocketLogic
     {
         Login,
         LoginErrorResponse,
-        LoginSucessResponse,
+        LoginSuccessResponse,
         GetAllUsersExceptCurrent,
         Error,
         Register,
         RegisterErrorResponse,
-        RegisterSucessResponse
+        RegisterSuccessResponse
     }
 }

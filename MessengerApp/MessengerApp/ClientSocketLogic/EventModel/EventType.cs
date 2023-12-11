@@ -10,11 +10,11 @@ namespace MessengerApp.ClientSocketLogic.EventModel
     {
         Login,
         LoginErrorResponse,
-        LoginSucessResponse,
+        LoginSucсessResponse,
         GetAllUsersExceptCurrent,
         Error,
         Register,
         RegisterErrorResponse,
-        RegisterSucessResponse
+        RegisterSuсcessResponse
     }
 }
