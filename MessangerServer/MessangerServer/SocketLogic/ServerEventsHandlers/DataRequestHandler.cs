@@ -40,11 +40,11 @@ namespace MessangerServer.SocketLogic.ServerEventsHandlers
             IUserRepository userRepository = new UserRepository(Context);
             IDialogRepository dialogRepository= new DialogRepository(Context);
 
-            string currentUserEmail = eventParam.Parameters["current_user"].ToString();
-            string anotherUserEmail = eventParam.Parameters["another_user"].ToString();
+            string currentUserEmail = eventParam.Parameters["currentUserEmail"].ToString();
+            string dialogUserEmail = eventParam.Parameters["dialogUserEmail"].ToString();
 
             var currentUser = userRepository.FirstOrDefault(user => user.Email == currentUserEmail);
-            var anotherUser = userRepository.FirstOrDefault(user => user.Email == anotherUserEmail);
+            var anotherUser = userRepository.FirstOrDefault(user => user.Email == dialogUserEmail);
             if (anotherUser == null || currentUser == null)
             {
                 var message = "Incorrect receiver or sender!";

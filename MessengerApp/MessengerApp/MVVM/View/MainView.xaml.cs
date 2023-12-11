@@ -26,7 +26,6 @@ namespace MessengerApp.MVVM.View
     {
         private List<User> Users { get; set; }
         private Dialog currentDialog { get; set; }
-
         private List<Message> Messages { get; set; }
 
         private void RequestUsers()
@@ -38,11 +37,11 @@ namespace MessengerApp.MVVM.View
             }
         }
 
-        private void RequestMessagesFromDialog(string userContact)
+        private void RequestMessagesFromDialog()
         {
             if (UserStore.currentUser.Email != null)
             {
-                var request = RequestEventGenerator.MessagesFromDialogRequest(UserStore.currentUser.Email); // currentUser and userContact
+                var request = RequestEventGenerator.MessagesFromDialogRequest(UserStore.currentUser.Email, DialogStore.dialogUser.Email);
                 SocketInitializer.clientSocketManager.eventToSend = request;
             }
         }
@@ -70,7 +69,12 @@ namespace MessengerApp.MVVM.View
 
         private void dynamicListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // request dialog and set it
+            var selectedUser = dynamicListBox.SelectedItem as User;
+            if (selectedUser != null)
+            {
+                DialogStore.dialogUser = new User { Email= selectedUser.Email, Nickname = selectedUser.Nickname };
+                RequestMessagesFromDialog();
+            }
         }
     }
 }

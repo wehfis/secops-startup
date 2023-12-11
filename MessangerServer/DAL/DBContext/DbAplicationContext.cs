@@ -58,6 +58,5 @@ namespace DAL.DBContex
         public DbSet<Dialog> Dialogs { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<UserDialog> UserDialogs { get; set; }
-
     }
 }

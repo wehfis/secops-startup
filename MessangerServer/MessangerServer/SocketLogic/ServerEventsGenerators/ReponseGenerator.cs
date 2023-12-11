@@ -51,7 +51,7 @@ namespace MessangerServer.SocketLogic.SocketEventsGenerators
             {
                 EventType = EventType.GetAllUsersExceptCurrent,
                 Parameters = new Dictionary<string, object> {
-                        { "users", messages.ToList() }
+                        { "dialogMessages", messages.ToList() }
                 }
             };
         }

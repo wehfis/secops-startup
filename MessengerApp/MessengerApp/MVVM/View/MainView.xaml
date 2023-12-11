@@ -142,7 +142,11 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                <ListBox Name="dynamicListBox" Grid.Row="3" Background="#005E63" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single" SelectionChanged="dynamicListBox_SelectionChanged">
+                <ListBox Name="dynamicListBox" 
+                    Grid.Row="3" Background="#005E63" 
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                    SelectionMode="Single" 
+                    SelectionChanged="dynamicListBox_SelectionChanged">
                     <ListBox.Resources>
                         <Style TargetType="ScrollBar">
                             <Setter Property="Background" Value="Transparent"/>
