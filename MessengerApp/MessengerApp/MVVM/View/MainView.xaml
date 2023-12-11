@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MessengerApp.MVVM.View"
         mc:Ignorable="d"
-        Title="MainView" Height="800" Width="1500" MinWidth="600" MinHeight="450"
+        Title="MainView" Height="800" Width="1500" MinWidth="1200" MinHeight="450"
         WindowStartupLocation="CenterScreen"
         FontFamily="Montserat"
         FontWeight="SemiBold">
@@ -142,13 +142,13 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                <ListBox Name="dynamicListBox" Grid.Row="3" Background="#005E63" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                        <ListBox.Resources>
-                            <Style TargetType="ScrollBar">
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="BorderBrush" Value="Transparent"/>
-                            </Style>
-                        </ListBox.Resources>
+                <ListBox Name="dynamicListBox" Grid.Row="3" Background="#005E63" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single" SelectionChanged="dynamicListBox_SelectionChanged">
+                    <ListBox.Resources>
+                        <Style TargetType="ScrollBar">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                        </Style>
+                    </ListBox.Resources>
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
                             <Setter Property="Padding" Value="0"/>
@@ -178,6 +178,90 @@
                             No chat is picked
                 </TextBlock>
             </Border>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+
+                <!-- Chat messages -->
+                <ListBox Name="messageListBox" 
+                         Grid.Row="0" VerticalAlignment="Stretch" 
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         Background="Transparent">
+                    <ListBox.Resources>
+                        <Style TargetType="ScrollBar">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                        </Style>
+                    </ListBox.Resources>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Padding" Value="0"/>
+                            <Setter Property="Margin" Value="-1"/>
+                            <Setter Property="Focusable" Value="False"/>
+                            <Setter Property="IsEnabled" Value="False" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="#005E63" Margin="35 10 10 10 " Padding="10px" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock Text="Sender" FontSize="14" Foreground="#EDFDFA" FontWeight="Medium"/>
+                                    <TextBlock Text="{Binding Content}" FontSize="20" Margin="0 4 0 0"  FontWeight="Medium" Foreground="#EDFDFA"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <!-- Border with 100px height -->
+                <Border Grid.Row="1" Height="60" Background="#02767D" Margin="20 0 20 40" CornerRadius="20 20 20 20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox 
+                            Grid.Column ="0"
+                        Width="800"
+                        x:Name="passwordTextBox"
+                        Height="47.06" 
+                        Background="Transparent"
+                        FontSize="24"
+                        FontWeight="Regular"
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        VerticalContentAlignment="Center"
+                        Margin="30 0 0 0">
+                            Type smomething...
+                        </TextBox>
+
+                        <Button FontSize="24" Foreground="#005E63" Grid.Column ="1" Margin="0 0 10 0">
+                            Send
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#26AFB6"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border BorderBrush="#EDFDFA" BorderThickness="2" Height="40" Background="#EDFDFA" CornerRadius="10">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
         </Grid>
     </Border>
 </Window>
