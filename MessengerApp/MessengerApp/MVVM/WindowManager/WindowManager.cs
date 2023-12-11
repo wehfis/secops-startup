@@ -1,4 +1,5 @@
-﻿using MessengerApp.ClientSocketLogic.Models;
+﻿using MessengerApp.ClientSocketLogic.DTO;
+using MessengerApp.ClientSocketLogic.Models;
 using MessengerApp.MVVM.View;
 using System;
 using System.Collections.Generic;
@@ -66,7 +67,7 @@ namespace MessengerApp.MVVM
             }
         }
 
-        public static void SetMainViewChatMessages(List<Message> messages)
+        public static void SetMainViewChatMessages(List<MessageDTO> messages)
         {
             var tryCastWindow = currentWindow as MainView;
             if (tryCastWindow != null)

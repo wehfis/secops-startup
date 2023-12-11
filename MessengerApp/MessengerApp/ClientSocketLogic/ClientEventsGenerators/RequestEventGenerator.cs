@@ -19,14 +19,26 @@ namespace MessengerApp.ClientSocketLogic.ClientEventsGenerators
             }
             };
         }
-        public static Event MessagesFromDialogRequest(string email, string dialogUserEmail)
+        public static Event MessagesFromDialogRequest(string currentUserEmail, string dialogUserEmail)
         {
             return new Event
             {
                 EventType = EventType.GetAllMessagesFromDialog,
                 Parameters = new Dictionary<string, object> {
-                { "currentUserEmail", email },
+                { "currentUserEmail", currentUserEmail },
                 { "dialogUserEmail", dialogUserEmail } 
+            }
+            };
+        }
+        public static Event SendMessageToDialogRequest(string senderUserEmail, string receiverUserEmail, string messageToSend)
+        {
+            return new Event
+            {
+                EventType = EventType.SendMessage,
+                Parameters = new Dictionary<string, object> {
+                { "senderUserEmail", senderUserEmail },
+                { "receiverUserEmail", receiverUserEmail },
+                { "message", messageToSend }
             }
             };
         }

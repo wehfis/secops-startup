@@ -1,5 +1,6 @@
 ﻿using MessengerApp.ClientSocketLogic.EventModel;
 using MessengerApp.ClientSocketLogic.Models;
+using MessengerApp.ClientSocketLogic.DTO;
 using MessengerApp.MVVM;
 using MessengerApp.MVVM.View;
 using MessengerApp.Stores;
@@ -45,7 +46,7 @@ namespace MessengerApp.ClientSocketLogic.ClientEventsHandlers
         {
             if (eventObj.Parameters["dialogMessages"].ToString() != null)
             {
-                List<Message>? messages = JsonSerializer.Deserialize<List<Message>>(eventObj.Parameters["dialogMessages"].ToString());
+                List<MessageDTO>? messages = JsonSerializer.Deserialize<List<MessageDTO>>(eventObj.Parameters["dialogMessages"].ToString());
                 WindowManager.SetMainViewChatMessages(messages);
             }
         }

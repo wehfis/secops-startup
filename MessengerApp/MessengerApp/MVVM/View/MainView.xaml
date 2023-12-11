@@ -182,7 +182,7 @@
                             No chat is picked
                 </TextBlock>
             </Border>
-            <Grid x:Name="chatPanel" Grid.Column="1" Visibility="Collapsed">
+            <Grid x:Name="chatPanel" Grid.Column="1" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="100" />
@@ -212,7 +212,8 @@
                         <DataTemplate>
                             <Border Background="#005E63" Margin="35 10 10 10 " Padding="10px" CornerRadius="5">
                                 <StackPanel>
-                                    <TextBlock Text="Sender" FontSize="14" Foreground="#EDFDFA" FontWeight="Medium"/>
+                                    <TextBlock Text="{Binding SenderEmail}" FontSize="14" Foreground="#EDFDFA" FontWeight="Medium"/>
+                                    <TextBlock Text="{Binding Time}" FontSize="10" Foreground="#EDFDFA" FontWeight="Medium"/>
                                     <TextBlock Text="{Binding Content}" FontSize="20" Margin="0 4 0 0"  FontWeight="Medium" Foreground="#EDFDFA"/>
                                 </StackPanel>
                             </Border>
@@ -231,7 +232,7 @@
                         <TextBox 
                             Grid.Column ="0"
                         Width="800"
-                        x:Name="passwordTextBox"
+                        x:Name="messageTextBox"
                         Height="47.06" 
                         Background="Transparent"
                         FontSize="24"
@@ -243,7 +244,7 @@
                             Type smomething...
                         </TextBox>
 
-                        <Button FontSize="24" Foreground="#005E63" Grid.Column ="1" Margin="0 0 10 0">
+                        <Button FontSize="24" Foreground="#005E63" Grid.Column ="1" Margin="0 0 10 0" Click="Button_Click_1">
                             Send
                             <Button.Style>
                                 <Style TargetType="Button">

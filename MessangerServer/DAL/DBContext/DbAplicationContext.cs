@@ -36,6 +36,12 @@ namespace DAL.DBContex
                 .HasForeignKey(m => m.DialogId)
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<User>()
+                .HasMany(d => d.Messages)
+                .WithOne(m => m.Sender)
+                .HasForeignKey(m => m.SenderId)
+                .IsRequired(false);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

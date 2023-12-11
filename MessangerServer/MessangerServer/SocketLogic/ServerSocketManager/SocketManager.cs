@@ -23,6 +23,7 @@ namespace MessangerServer.SocketLogic
                 {
                     Console.WriteLine($"Server is running ip: {address.ToString()} on port: {LISTENING_PORT}.");
                     LISTENING_ADDRESS = address;
+                    break;
                 }
             }
 
@@ -67,6 +68,9 @@ namespace MessangerServer.SocketLogic
                                 break;
                             case EventType.GetAllMessagesFromDialog:
                                 DataRequestHandler.HandleGetAllMessagesFromDialog(receivedEvent);
+                                break;
+                            case EventType.SendMessage:
+                                DataRequestHandler.HandleSendMessageToDialog(receivedEvent);
                                 break;
                         }
                     }

@@ -30,5 +30,11 @@ namespace DAL.Persistence.Repositories
 
             return dialog;
         }
+        public Dialog GetDialogWithMessages(long dialogId)
+        {
+            return _context.Dialogs
+                .Include(d => d.Messages) // Ensure Messages are included
+                .FirstOrDefault(d => d.Id == dialogId);
+        }
     }
 }

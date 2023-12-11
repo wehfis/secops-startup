@@ -1,4 +1,5 @@
 ﻿using BLL.Core.Domain;
+using MessangerServer.SocketLogic.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,13 +46,14 @@ namespace MessangerServer.SocketLogic.SocketEventsGenerators
             };
         }
 
-        public static Event GetAllMessagesFromDialogResponse(IEnumerable<Message> messages)
+        public static Event GetAllMessagesFromDialogResponse(List<MessageDTO> messagesDto)
         {
+            
             return new Event
             {
                 EventType = EventType.GetAllMessagesFromDialogResponse,
                 Parameters = new Dictionary<string, object> {
-                        { "dialogMessages", messages.ToList() }
+                        { "dialogMessages", messagesDto }
                 }
             };
         }

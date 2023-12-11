@@ -1,5 +1,6 @@
 ﻿using MessengerApp.ClientSocketLogic.ClientEventsGenerators;
 using MessengerApp.ClientSocketLogic.ClientSocketManager;
+using MessengerApp.ClientSocketLogic.DTO;
 using MessengerApp.ClientSocketLogic.Models;
 using MessengerApp.Stores;
 using System;
@@ -26,7 +27,7 @@ namespace MessengerApp.MVVM.View
     {
         private List<User> Users { get; set; }
         private Dialog currentDialog { get; set; }
-        private List<Message> Messages { get; set; }
+        private List<MessageDTO> Messages { get; set; }
 
         private void RequestUsers()
         {
@@ -46,6 +47,15 @@ namespace MessengerApp.MVVM.View
             }
         }
 
+        private void RequestSendMessage(User sender, User receiver, string message)
+        {
+            if (UserStore.currentUser.Email != null)
+            {
+                var request = RequestEventGenerator.SendMessageToDialogRequest(sender.Email, receiver.Email, message);
+                SocketInitializer.clientSocketManager.eventToSend = request;
+            }
+        }
+
         public MainView()
         {
             InitializeComponent();
@@ -60,7 +70,7 @@ namespace MessengerApp.MVVM.View
             dynamicListBox.ItemsSource = Users;
         }
 
-        public void SetChatMessages(List<Message> messages)
+        public void SetChatMessages(List<MessageDTO> messages)
         {
             Messages = messages;
             dynamicListBox.ItemsSource = Users;
@@ -81,6 +91,17 @@ namespace MessengerApp.MVVM.View
             {
                 DialogStore.dialogUser = new User { Email= selectedUser.Email, Nickname = selectedUser.Nickname };
                 RequestMessagesFromDialog();
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var currentUser = UserStore.currentUser;
+            var dialogUser = DialogStore.dialogUser;
+            var messageToSend = messageTextBox.Text;
+            if (currentUser != null && dialogUser != null && messageToSend != string.Empty)
+            {
+                RequestSendMessage(currentUser, dialogUser, messageToSend);
             }
         }
     }

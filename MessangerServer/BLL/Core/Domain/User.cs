@@ -9,5 +9,6 @@ namespace BLL.Core.Domain
         public string? Nickname { get; set; }
         public string? Password { get; set; }
         public ICollection<UserDialog> UserDialogs { get; set; }
+        public ICollection<Message> Messages{ get; set; }
     }
 }
