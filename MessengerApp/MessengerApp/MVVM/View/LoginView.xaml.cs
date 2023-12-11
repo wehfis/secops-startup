@@ -11,11 +11,9 @@ namespace MessengerApp.MVVM.View
     /// </summary>
     public partial class LoginView : Window
     {
-        Person person = new Person { Name = "ANDRII"};
         public LoginView()
         {
             InitializeComponent();
-            this.DataContext = person;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -68,17 +66,5 @@ namespace MessengerApp.MVVM.View
         {
             anotherErrorLabel.Text = errorMessage;
         }
-    }
-    public class Person
-    {
-
-        private string nameValue;
-
-        public string Name
-        {
-            get { return nameValue; }
-            set { nameValue = value; }
-        }
-
     }
 }

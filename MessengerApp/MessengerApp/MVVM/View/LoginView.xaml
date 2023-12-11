@@ -56,7 +56,7 @@
                     </TextBlock>
                     <TextBox
                         x:Name="emailTextBox"
-                        Text = "{Binding Name}"
+                        Text = "email"
                         Width="400" 
                         Height="47.06" 
                         BorderBrush="#005E63"

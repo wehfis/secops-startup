@@ -24,19 +24,13 @@ namespace MessengerApp.MVVM.View
     /// </summary>
     public partial class MainView : Window
     {
-        public ObservableCollection<User> Users { get; set; }
-        public class CustomItem
-        {
-            public string Name { get; set; }
-            public string Description { get; set; }
-            // Add more properties based on your data
-        }
+        private List<User> Users { get; set; }
 
         private void RequestUsers()
         {
-            if (UserStore.currentUserEmailState != null)
+            if (UserStore.currentUser.Email != null)
             {
-                var request = RequestEventGenerator.UsersExceptCurrentRequest(UserStore.currentUserEmailState);
+                var request = RequestEventGenerator.UsersExceptCurrentRequest(UserStore.currentUser.Email);
                 SocketInitializer.clientSocketManager.eventToSend = request ;
             }
         }
@@ -45,26 +39,13 @@ namespace MessengerApp.MVVM.View
         {
             InitializeComponent();
             RequestUsers();
-            userEmailProfileTextBox.Text = UserStore.currentUserEmailState;
-            //Items = new ObservableCollection<CustomItem>();
-            //dynamicListBox.ItemsSource = Items;
-
-            // Add some sample data (you can replace this with your dynamic data)
-            //Items.Add(new CustomItem { Name = "Item 1", Description = "Description for Item 1" });
-            //Items.Add(new CustomItem { Name = "Item 2", Description = "Description for Item 2" });
-            //Items.Add(new CustomItem { Name = "Item 1", Description = "Description for Item 1" });
-            //Items.Add(new CustomItem { Name = "Item 2", Description = "Description for Item 2" });
-            //Items.Add(new CustomItem { Name = "Item 1", Description = "Description for Item 1" });
-            //Items.Add(new CustomItem { Name = "Item 2", Description = "Description for Item 2" });
-            //Items.Add(new CustomItem { Name = "Item 1", Description = "Description for Item 1" });
-            //Items.Add(new CustomItem { Name = "Item 2", Description = "Description for Item 2" });
-            //Items.Add(new CustomItem { Name = "Item 1", Description = "Description for Item 1" });
-            //Items.Add(new CustomItem { Name = "Item 2", Description = "Description for Item 2" });
+            userEmailProfileTextBox.Text = UserStore.currentUser.Email;
+            userNicknameProfileTextBox.Text = UserStore.currentUser.Nickname;
         }
 
         public void SetAviableUsers(List<User> users)
         {
-            Users = new ObservableCollection<User>(users);
+            Users = users;
             dynamicListBox.ItemsSource = Users;
         }
 

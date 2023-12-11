@@ -16,8 +16,10 @@ namespace MessengerApp.ClientSocketLogic.ClientEventsHandlers
     {
         public static void SucessReponseHandler(Event eventObj)
         {
-            UserStore.currentUserEmailState = eventObj.Parameters["email"].ToString();
-            UserStore.currentUserPasswordlState = eventObj.Parameters["password"].ToString();
+            string? email = eventObj.Parameters["email"]?.ToString();
+            string? nickname = eventObj.Parameters["nickname"]?.ToString();
+            string? password = eventObj.Parameters["password"]?.ToString();
+            UserStore.currentUser = new User { Email = email, Nickname = nickname, Password = password };
             WindowManager.RedirectToAnotherwindow<MainView>();
         }
 
