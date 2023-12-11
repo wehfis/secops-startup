@@ -65,5 +65,17 @@ namespace MessengerApp.MVVM
                 });
             }
         }
+
+        public static void SetMainViewChatMessages(List<Message> messages)
+        {
+            var tryCastWindow = currentWindow as MainView;
+            if (tryCastWindow != null)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    tryCastWindow.SetChatMessages(messages);
+                });
+            }
+        }
     }
 }

@@ -49,7 +49,7 @@ namespace MessangerServer.SocketLogic.SocketEventsGenerators
         {
             return new Event
             {
-                EventType = EventType.GetAllUsersExceptCurrent,
+                EventType = EventType.GetAllMessagesFromDialogResponse,
                 Parameters = new Dictionary<string, object> {
                         { "dialogMessages", messages.ToList() }
                 }

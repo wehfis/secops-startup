@@ -35,13 +35,14 @@ namespace MessangerServer.SocketLogic
         public static void HandleRegister(Event eventParam)
         {
             DbAplicationContext registerContext = new DbAplicationContext();
-            IUserRepository newUser = new UserRepository(registerContext);
+            IUserRepository userRepository = new UserRepository(registerContext);
+            IDialogRepository dialogRepository = new DialogRepository(registerContext);
 
             string email = eventParam.Parameters["email"].ToString();
             string nickname = eventParam.Parameters["nickname"].ToString();
             string password = eventParam.Parameters["password"].ToString();
 
-            if (newUser.FirstOrDefault(user => user.Email == email) != null)
+            if (userRepository.FirstOrDefault(user => user.Email == email) != null)
             {
                 var message = "This user is already exist!";
                 var responseEvent = ResponseGenerator.GenerateErrorResponse(EventType.RegisterErrorResponse, message);
@@ -49,22 +50,32 @@ namespace MessangerServer.SocketLogic
             }
             else
             {
-                User userEntity = new User { Email = email, Nickname = nickname, Password = password };
+                User userEntity = new User { Email = email, Nickname = nickname, Password = password};
 
-                newUser.Add(userEntity);
-                registerContext.SaveChanges();
-                var tryGetUsers = newUser.Find(user => user.Email != email);
+                userRepository.Add(userEntity);
+                var tryGetUsers = userRepository.Find(user => user.Email != email);
                 // create Dialogs with all existing users
+                userEntity.UserDialogs = new List<UserDialog>();
                 foreach (var existingUser in tryGetUsers)
                 {
-                    UserDialog userDialog1 = new UserDialog { User = userEntity, Dialog = new Dialog() };
-                    UserDialog userDialog2 = new UserDialog { User = existingUser, Dialog = userDialog1.Dialog };
+                    Dialog newDialog = new Dialog();
+                    dialogRepository.Add(newDialog);
 
-                    userEntity.UserDialogs.Add(userDialog1);
-                    existingUser.UserDialogs.Add(userDialog2);
+                    UserDialog incomingUserDialog = new UserDialog { User = userEntity, Dialog = newDialog };
+                    UserDialog existingUserDialog = new UserDialog { User = existingUser, Dialog = incomingUserDialog.Dialog };
 
-                    registerContext.SaveChanges();
+                    userEntity.UserDialogs.Add(incomingUserDialog);
+                    if(existingUser.UserDialogs == null)
+                    {
+                        existingUser.UserDialogs = new List<UserDialog>();
+                        existingUser.UserDialogs.Add(existingUserDialog);
+                    }
+                    else
+                    {
+                        existingUser.UserDialogs.Add(existingUserDialog);
+                    }
                 }
+                registerContext.SaveChanges();
                 registerContext.Dispose();
 
                 var sucessResponseEvent = ResponseGenerator.GenerateSuccessResponse(EventType.RegisterSuccessResponse, userEntity);

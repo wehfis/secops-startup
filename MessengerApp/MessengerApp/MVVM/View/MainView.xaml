@@ -177,12 +177,12 @@
             </Grid>
 
             <!-- Rigt area content -->
-            <Border Grid.Column="1" Width="555.3" Height="84.73" Background="#005E63" CornerRadius="50">
+            <Border x:Name="noChatLabel" Grid.Column="1" Width="555.3" Height="84.73" Background="#005E63" CornerRadius="50" Visibility="Collapsed">
                 <TextBlock FontSize="44" Foreground="#EDFDFA" TextAlignment="Center" VerticalAlignment="Center">
                             No chat is picked
                 </TextBlock>
             </Border>
-            <Grid Grid.Column="1">
+            <Grid x:Name="chatPanel" Grid.Column="1" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="100" />

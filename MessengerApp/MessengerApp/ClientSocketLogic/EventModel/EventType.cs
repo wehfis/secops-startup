@@ -16,6 +16,7 @@ namespace MessengerApp.ClientSocketLogic.EventModel
         Register,
         RegisterErrorResponse,
         RegisterSuccessResponse,
-        GetAllMessagesFromDialog
+        GetAllMessagesFromDialog,
+        GetAllMessagesFromDialogResponse
     }
 }

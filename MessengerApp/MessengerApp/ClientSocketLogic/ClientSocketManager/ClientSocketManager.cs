@@ -86,7 +86,7 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
                             case EventType.GetAllUsersExceptCurrent:
                                 ResponseHandlers.UsersExceptCurrentResponse(receivedEvent);
                                 break;
-                            case EventType.GetAllMessagesFromDialog:
+                            case EventType.GetAllMessagesFromDialogResponse:
                                 ResponseHandlers.MessagesFromDialogResponse(receivedEvent);
                                 break;
                         }

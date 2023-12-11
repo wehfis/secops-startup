@@ -41,12 +41,12 @@ namespace MessengerApp.ClientSocketLogic.ClientEventsHandlers
             }
         }
 
-        public static void MessagesFromDialogResponse(Event eventObj) //update
+        public static void MessagesFromDialogResponse(Event eventObj)
         {
-            if (eventObj.Parameters["users"].ToString() != null)
+            if (eventObj.Parameters["dialogMessages"].ToString() != null)
             {
-                List<User>? users = JsonSerializer.Deserialize<List<User>>(eventObj.Parameters["users"].ToString());
-                WindowManager.SetMainViewUsers(users);
+                List<Message>? messages = JsonSerializer.Deserialize<List<Message>>(eventObj.Parameters["dialogMessages"].ToString());
+                WindowManager.SetMainViewChatMessages(messages);
             }
         }
     }

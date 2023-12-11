@@ -52,14 +52,21 @@ namespace MessengerApp.MVVM.View
             RequestUsers();
             userEmailProfileTextBox.Text = UserStore.currentUser.Email;
             userNicknameProfileTextBox.Text = UserStore.currentUser.Nickname;
-            Messages = new List<Message>() { new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" } };
-            messageListBox.ItemsSource = Messages;
         }
 
         public void SetAviableUsers(List<User> users)
         {
             Users = users;
             dynamicListBox.ItemsSource = Users;
+        }
+
+        public void SetChatMessages(List<Message> messages)
+        {
+            Messages = messages;
+            dynamicListBox.ItemsSource = Users;
+            messageListBox.ItemsSource = Messages;
+            chatPanel.Visibility = Visibility.Visible;
+            noChatLabel.Visibility = Visibility.Hidden;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
