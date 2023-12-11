@@ -65,6 +65,9 @@ namespace MessangerServer.SocketLogic
                             case EventType.GetAllUsersExceptCurrent:
                                 DataRequestHandler.HandleGetAllUsersExceptCurrent(receivedEvent);
                                 break;
+                            case EventType.GetAllMessagesFromDialog:
+                                DataRequestHandler.HandleGetAllMessagesFromDialog(receivedEvent);
+                                break;
                         }
                     }
                     await Task.Delay(100);

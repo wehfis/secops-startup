@@ -15,6 +15,7 @@ namespace MessangerServer.SocketLogic
         Error,
         Register,
         RegisterErrorResponse,
-        RegisterSuccessResponse
+        RegisterSuccessResponse,
+        GetAllMessagesFromDialog
     }
 }

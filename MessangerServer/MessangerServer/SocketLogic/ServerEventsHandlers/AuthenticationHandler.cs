@@ -53,6 +53,18 @@ namespace MessangerServer.SocketLogic
 
                 newUser.Add(userEntity);
                 registerContext.SaveChanges();
+                var tryGetUsers = newUser.Find(user => user.Email != email);
+                // create Dialogs with all existing users
+                foreach (var existingUser in tryGetUsers)
+                {
+                    UserDialog userDialog1 = new UserDialog { User = userEntity, Dialog = new Dialog() };
+                    UserDialog userDialog2 = new UserDialog { User = existingUser, Dialog = userDialog1.Dialog };
+
+                    userEntity.UserDialogs.Add(userDialog1);
+                    existingUser.UserDialogs.Add(userDialog2);
+
+                    registerContext.SaveChanges();
+                }
                 registerContext.Dispose();
 
                 var sucessResponseEvent = ResponseGenerator.GenerateSuccessResponse(EventType.RegisterSuccessResponse, userEntity);

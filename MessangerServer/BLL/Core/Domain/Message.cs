@@ -9,7 +9,6 @@ namespace BLL.Core.Domain
         public long? DialogId { get; set; }
         public DateTime? Time { get; set; }
         public long? SenderId { get; set; }
-        public long? RecipientId { get; set; }
         public Dialog? Dialog { get; set; }
     }
 }

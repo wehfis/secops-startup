@@ -9,5 +9,6 @@ namespace BLL.Core.Repositories
 {
     public interface IDialogRepository: IRepository<Dialog>
     {
+        Dialog FindDialogByUsers(long userId1, long userId2);
     }
 }

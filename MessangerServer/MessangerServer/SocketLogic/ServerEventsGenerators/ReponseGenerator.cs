@@ -44,5 +44,16 @@ namespace MessangerServer.SocketLogic.SocketEventsGenerators
                 }
             };
         }
+
+        public static Event GetAllMessagesFromDialogResponse(IEnumerable<Message> messages)
+        {
+            return new Event
+            {
+                EventType = EventType.GetAllUsersExceptCurrent,
+                Parameters = new Dictionary<string, object> {
+                        { "users", messages.ToList() }
+                }
+            };
+        }
     }
 }

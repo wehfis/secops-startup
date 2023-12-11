@@ -34,5 +34,41 @@ namespace MessangerServer.SocketLogic.ServerEventsHandlers
                 SocketInitializer.serverSocketManager.SendEvent(sucessResponseEvent);
             }
         }
+        public static void HandleGetAllMessagesFromDialog(Event eventParam)
+        {
+            DbAplicationContext Context = new DbAplicationContext();
+            IUserRepository userRepository = new UserRepository(Context);
+            IDialogRepository dialogRepository= new DialogRepository(Context);
+
+            string currentUserEmail = eventParam.Parameters["current_user"].ToString();
+            string anotherUserEmail = eventParam.Parameters["another_user"].ToString();
+
+            var currentUser = userRepository.FirstOrDefault(user => user.Email == currentUserEmail);
+            var anotherUser = userRepository.FirstOrDefault(user => user.Email == anotherUserEmail);
+            if (anotherUser == null || currentUser == null)
+            {
+                var message = "Incorrect receiver or sender!";
+                var response = ResponseGenerator.GenerateErrorResponse(EventType.Error, message);
+                SocketInitializer.serverSocketManager.SendEvent(response);
+            }
+            else
+            {
+                var dialog = dialogRepository.FindDialogByUsers(currentUser.Id, anotherUser.Id);
+
+                if (dialog != null)
+                {
+                    var messagesFromDialog = dialog.Messages;
+
+                    var successResponseEvent = ResponseGenerator.GetAllMessagesFromDialogResponse(messagesFromDialog);
+                    SocketInitializer.serverSocketManager.SendEvent(successResponseEvent);
+                }
+                else
+                {
+                    var message = "No dialog found between users!";
+                    var response = ResponseGenerator.GenerateErrorResponse(EventType.Error, message);
+                    SocketInitializer.serverSocketManager.SendEvent(response);
+                }
+            }
+        }
     }
 }

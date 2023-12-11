@@ -17,22 +17,25 @@ namespace DAL.DBContex
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>()
-                .HasMany(e => e.Dialogs)
-                .WithOne(e => e.Sender)
-                .HasForeignKey(e => e.SenderId)
-                .IsRequired(false)
-                .IsRequired(true)
-                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<UserDialog>()
+                    .HasKey(ud => new { ud.UserId, ud.DialogId });
+
+            modelBuilder.Entity<UserDialog>()
+                .HasOne(ud => ud.User)
+                .WithMany(u => u.UserDialogs)
+                .HasForeignKey(ud => ud.UserId);
+
+            modelBuilder.Entity<UserDialog>()
+                .HasOne(ud => ud.Dialog)
+                .WithMany(d => d.UserDialogs)
+                .HasForeignKey(ud => ud.DialogId);
 
             modelBuilder.Entity<Dialog>()
-                .HasMany(e => e.Messages)
-                .WithOne(e => e.Dialog)
-                .HasForeignKey(e => e.DialogId)
+                .HasMany(d => d.Messages)
+                .WithOne(m => m.Dialog)
+                .HasForeignKey(m => m.DialogId)
                 .IsRequired(false)
-                .IsRequired(true)
                 .OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Seed();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -54,5 +57,7 @@ namespace DAL.DBContex
         public DbSet<User> Users { get; set; }
         public DbSet<Dialog> Dialogs { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<UserDialog> UserDialogs { get; set; }
+
     }
 }
