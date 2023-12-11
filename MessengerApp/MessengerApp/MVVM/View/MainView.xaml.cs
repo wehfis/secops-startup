@@ -25,6 +25,9 @@ namespace MessengerApp.MVVM.View
     public partial class MainView : Window
     {
         private List<User> Users { get; set; }
+        private Dialog currentDialog { get; set; }
+
+        private List<Message> Messages { get; set; }
 
         private void RequestUsers()
         {
@@ -41,6 +44,8 @@ namespace MessengerApp.MVVM.View
             RequestUsers();
             userEmailProfileTextBox.Text = UserStore.currentUser.Email;
             userNicknameProfileTextBox.Text = UserStore.currentUser.Nickname;
+            Messages = new List<Message>() { new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" }, new Message { Content = "hello" } };
+            messageListBox.ItemsSource = Messages;
         }
 
         public void SetAviableUsers(List<User> users)
@@ -52,6 +57,11 @@ namespace MessengerApp.MVVM.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             WindowManager.RedirectToAnotherwindow<WelcomeView>();
+        }
+
+        private void dynamicListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // request dialog and set it
         }
     }
 }
