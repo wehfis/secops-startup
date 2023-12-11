@@ -38,6 +38,15 @@ namespace MessengerApp.MVVM.View
             }
         }
 
+        private void RequestMessagesFromDialog(string userContact)
+        {
+            if (UserStore.currentUser.Email != null)
+            {
+                var request = RequestEventGenerator.MessagesFromDialogRequest(UserStore.currentUser.Email); // currentUser and userContact
+                SocketInitializer.clientSocketManager.eventToSend = request;
+            }
+        }
+
         public MainView()
         {
             InitializeComponent();

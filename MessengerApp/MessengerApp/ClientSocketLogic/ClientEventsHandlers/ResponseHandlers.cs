@@ -40,5 +40,14 @@ namespace MessengerApp.ClientSocketLogic.ClientEventsHandlers
                 WindowManager.SetMainViewUsers(users);
             }
         }
+
+        public static void MessagesFromDialogResponse(Event eventObj) //update
+        {
+            if (eventObj.Parameters["users"].ToString() != null)
+            {
+                List<User>? users = JsonSerializer.Deserialize<List<User>>(eventObj.Parameters["users"].ToString());
+                WindowManager.SetMainViewUsers(users);
+            }
+        }
     }
 }

@@ -71,10 +71,10 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
                         {
                             case EventType.Login:
                                 break;
-                            case EventType.LoginSucсessResponse:
+                            case EventType.LoginSuccessResponse:
                                 ResponseHandlers.SucсessReponseHandler(receivedEvent);
                                 break;
-                            case EventType.RegisterSuсcessResponse:
+                            case EventType.RegisterSuccessResponse:
                                 ResponseHandlers.SucсessReponseHandler(receivedEvent);
                                 break;
                             case EventType.LoginErrorResponse:
@@ -85,6 +85,9 @@ namespace MessengerApp.ClientSocketLogic.ClientSocketManager
                                 break;
                             case EventType.GetAllUsersExceptCurrent:
                                 ResponseHandlers.UsersExceptCurrentResponse(receivedEvent);
+                                break;
+                            case EventType.GetAllMessagesFromDialog:
+                                ResponseHandlers.MessagesFromDialogResponse(receivedEvent);
                                 break;
                         }
                     }
