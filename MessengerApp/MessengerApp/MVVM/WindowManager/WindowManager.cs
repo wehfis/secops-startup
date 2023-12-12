@@ -55,7 +55,7 @@ namespace MessengerApp.MVVM
             }
         }
 
-        public static void SetMainViewUsers(List<User> users)
+        public static void SetMainViewUsers(List<UserContactDTO> users)
         {
             var tryCastWindow = currentWindow as MainView;
             if (tryCastWindow != null)

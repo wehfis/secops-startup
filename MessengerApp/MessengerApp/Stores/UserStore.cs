@@ -10,7 +10,5 @@ namespace MessengerApp.Stores
     public static class UserStore
     {
         public static User? currentUser { get; set; }
-        public static string? currentUserEmailState { get; set; }
-        public static string? currentUserPasswordlState { get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace MessengerApp.ClientSocketLogic.ClientEventsHandlers
         {
             if (eventObj.Parameters["users"].ToString() != null)
             {
-                List<User>? users = JsonSerializer.Deserialize<List<User>>(eventObj.Parameters["users"].ToString());
+                List<UserContactDTO>? users = JsonSerializer.Deserialize<List<UserContactDTO>>(eventObj.Parameters["users"].ToString());
                 WindowManager.SetMainViewUsers(users);
             }
         }

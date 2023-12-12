@@ -23,8 +23,8 @@ namespace MessangerServer.SocketLogic.ServerEventsHandlers
 
             string email = eventParam.Parameters["email"].ToString();
 
-            var tryGetUser = userRepository.Find(user => user.Email != email );
-            if (tryGetUser == null)
+            var tryGetUsers = userRepository.Find(user => user.Email != email ).Select(u => new UserContactDTO { Email = u.Email, Nickname = u.Nickname});
+            if (tryGetUsers == null)
             {
                 var message = "No users found";
                 var response = ResponseGenerator.GenerateErrorResponse(EventType.Error, message);
@@ -32,7 +32,7 @@ namespace MessangerServer.SocketLogic.ServerEventsHandlers
             }
             else
             {
-                var sucessResponseEvent = ResponseGenerator.GetAllUsersExceptCurrentResponse(tryGetUser);
+                var sucessResponseEvent = ResponseGenerator.GetAllUsersExceptCurrentResponse(tryGetUsers);
                 SocketInitializer.serverSocketManager.SendEvent(sucessResponseEvent);
             }
         }

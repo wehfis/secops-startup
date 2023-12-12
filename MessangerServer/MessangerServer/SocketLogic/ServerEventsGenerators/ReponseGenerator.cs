@@ -35,7 +35,7 @@ namespace MessangerServer.SocketLogic.SocketEventsGenerators
             };
         }
 
-        public static Event GetAllUsersExceptCurrentResponse(IEnumerable<User> users)
+        public static Event GetAllUsersExceptCurrentResponse(IEnumerable<UserContactDTO> users)
         {
             return new Event
             {
