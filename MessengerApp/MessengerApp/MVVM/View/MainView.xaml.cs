@@ -74,6 +74,7 @@ namespace MessengerApp.MVVM.View
 
         private void dynamicListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Messages = null;
             var selectedUser = dynamicListBox.SelectedItem as UserContactDTO;
             if (selectedUser != null)
             {
