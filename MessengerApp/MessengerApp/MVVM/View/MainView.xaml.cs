@@ -3,20 +3,9 @@ using MessengerApp.ClientSocketLogic.ClientSocketManager;
 using MessengerApp.ClientSocketLogic.DTO;
 using MessengerApp.ClientSocketLogic.Models;
 using MessengerApp.Stores;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MessengerApp.MVVM.View
 {
@@ -25,8 +14,7 @@ namespace MessengerApp.MVVM.View
     /// </summary>
     public partial class MainView : Window
     {
-        private List<User> Users { get; set; }
-        private Dialog currentDialog { get; set; }
+        private List<UserContactDTO> Users { get; set; }
         private List<MessageDTO> Messages { get; set; }
 
         private void RequestUsers()
@@ -47,7 +35,7 @@ namespace MessengerApp.MVVM.View
             }
         }
 
-        private void RequestSendMessage(User sender, User receiver, string message)
+        private void RequestSendMessage(User sender, UserContactDTO receiver, string message)
         {
             if (UserStore.currentUser.Email != null)
             {
@@ -64,7 +52,7 @@ namespace MessengerApp.MVVM.View
             userNicknameProfileTextBox.Text = UserStore.currentUser.Nickname;
         }
 
-        public void SetAviableUsers(List<User> users)
+        public void SetAviableUsers(List<UserContactDTO> users)
         {
             Users = users;
             dynamicListBox.ItemsSource = Users;
@@ -86,10 +74,11 @@ namespace MessengerApp.MVVM.View
 
         private void dynamicListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedUser = dynamicListBox.SelectedItem as User;
+            Messages = null;
+            var selectedUser = dynamicListBox.SelectedItem as UserContactDTO;
             if (selectedUser != null)
             {
-                DialogStore.dialogUser = new User { Email= selectedUser.Email, Nickname = selectedUser.Nickname };
+                DialogStore.dialogUser = new UserContactDTO { Email= selectedUser.Email, Nickname = selectedUser.Nickname };
                 RequestMessagesFromDialog();
             }
         }

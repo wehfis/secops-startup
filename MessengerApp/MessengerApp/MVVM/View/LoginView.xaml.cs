@@ -29,7 +29,7 @@ namespace MessengerApp.MVVM.View
             validateTextBoxes();
 
             string email = emailTextBox.Text;
-            string password = passwordTextBox.Text;
+            string password = passwordTextBox.Password.ToString();
 
             Event generatedEvent = AuthEventGenerator.GenerateLoginEvent(email, password);
             SocketInitializer.clientSocketManager.SendEvent(generatedEvent);
@@ -47,7 +47,7 @@ namespace MessengerApp.MVVM.View
         public void validateTextBoxes()
         {
             string email = emailTextBox.Text;
-            string password = passwordTextBox.Text;
+            string password = passwordTextBox.Password.ToString();
 
             emailErrorLabel.Text = "";
             passwordErrorLabel.Text = "";

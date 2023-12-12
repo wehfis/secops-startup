@@ -1,4 +1,5 @@
-﻿using MessengerApp.ClientSocketLogic.Models;
+﻿using MessengerApp.ClientSocketLogic.DTO;
+using MessengerApp.ClientSocketLogic.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace MessengerApp.Stores
 {
     public static class DialogStore
     {
-        public static User? dialogUser { get; set; }
+        public static UserContactDTO? dialogUser { get; set; }
     }
 }
