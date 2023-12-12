@@ -60,7 +60,7 @@ namespace MessangerServer.SocketLogic.ServerEventsHandlers
                 if (dialog != null)
                 {
                     var messagesFromDialogUpdated = dialogRepository.GetDialogWithMessages(dialog.Id);
-                    var dtoResult = messagesFromDialogUpdated.Messages.Select(m => new MessageDTO { SenderEmail = m.Sender.Email, Content = m.Content, Time = m.Time }).ToList();
+                    var dtoResult = messagesFromDialogUpdated.Messages.Select(m => new MessageDTO { SenderEmail = m.Sender.Email, Content = m.Content, Time = m.Time }).OrderBy(m => m.Time).ToList();
 
                     var successResponseEvent = ResponseGenerator.GetAllMessagesFromDialogResponse(dtoResult);
                     SocketInitializer.serverSocketManager.SendEvent(successResponseEvent);
@@ -109,7 +109,7 @@ namespace MessangerServer.SocketLogic.ServerEventsHandlers
                     messageRepository.Add(message);
                     Context.SaveChanges();
                     var messagesFromDialogUpdated = dialogRepository.GetDialogWithMessages(dialog.Id);
-                    var dtoResult = messagesFromDialogUpdated.Messages.Select(m => new MessageDTO { SenderEmail = m.Sender.Email, Content = m.Content, Time = m.Time }).ToList();
+                    var dtoResult = messagesFromDialogUpdated.Messages.Select(m => new MessageDTO { SenderEmail = m.Sender.Email, Content = m.Content, Time = m.Time }).OrderBy(m => m.Time).ToList();
 
                     var successResponseEvent = ResponseGenerator.GetAllMessagesFromDialogResponse(dtoResult);
                     SocketInitializer.serverSocketManager.SendEvent(successResponseEvent);
